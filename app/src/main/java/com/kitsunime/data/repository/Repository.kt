@@ -19,4 +19,12 @@ class Repository @Inject constructor(
         return animeService.getAnimeList()
     }
 
+    override suspend fun getMangaTrendingList(): AnimeListResponse {
+        return mangaService.getTrendingMangaList()
+    }
+
+    override suspend fun getMangaList(): AnimeListResponse {
+        return mangaService.getMangaList()
+    }
+
 }

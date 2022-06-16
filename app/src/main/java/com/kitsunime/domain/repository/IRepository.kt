@@ -6,5 +6,7 @@ interface IRepository {
 
     suspend fun getAnimeTrendingList(): AnimeListResponse
     suspend fun getAnimeList(): AnimeListResponse
+    suspend fun getMangaTrendingList(): AnimeListResponse
+    suspend fun getMangaList(): AnimeListResponse
 
 }
