@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.kitsunime.R
+import com.kitsunime.common.setVisibilityGone
+import com.kitsunime.common.setVisibilityVisible
 import com.kitsunime.databinding.FragmentAnimeBinding
-import com.kitsunime.presentation.anime.adapter.HorizontalAdapter
-import com.kitsunime.presentation.anime.adapter.VerticalAdapter
+import com.kitsunime.presentation.anime.adapter.AnimeAdapter
+import com.kitsunime.presentation.anime.adapter.AnimeTrendingAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,8 +20,8 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
     private val binding get() = _binding!!
 
     private val animeVm: AnimeViewModel by viewModels()
-    private val horizontalAdapter by lazy { HorizontalAdapter() }
-    private val verticalAdapter by lazy { VerticalAdapter() }
+    private val animeTrendingAdapter by lazy { AnimeTrendingAdapter() }
+    private val animeAdapter by lazy { AnimeAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,11 +34,11 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
 
     private fun initRecyclerView() {
         binding.contAnimeListTrend.rvAnimeTrending.apply {
-            adapter = horizontalAdapter
+            adapter = animeTrendingAdapter
             setHasFixedSize(true)
         }
         binding.contAnimeList.rvAnimeList.apply {
-            adapter = verticalAdapter
+            adapter = animeAdapter
             setHasFixedSize(true)
         }
     }
@@ -45,14 +47,21 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
         lifecycleScope.launchWhenStarted {
             animeVm.trendingAnimeUiState.collect { uiState ->
                 when {
-                    uiState.data?.data?.isNotEmpty() == true -> {
-                        horizontalAdapter.submitData(uiState.data)
-                        binding.contAnimeListTrend.root.visibility = View.VISIBLE
-                    }
                     uiState.isLoading -> {
-
+                        binding.contShimAnimeListTrend.root.setVisibilityVisible()
+                        binding.contAnimeListTrend.root.setVisibilityGone()
+                    }
+                    uiState.data.isNotEmpty() -> {
+                        binding.contShimAnimeListTrend.root.stopShimmer()
+                        binding.contShimAnimeListTrend.root.setVisibilityGone()
+                        binding.contAnimeListTrend.root.setVisibilityVisible()
+                        animeTrendingAdapter.submitData(uiState.data)
                     }
                     uiState.error.isNotEmpty() -> {
+                        binding.contShimAnimeListTrend.root.stopShimmer()
+                        binding.contShimAnimeListTrend.root.setVisibilityGone()
+                        binding.contAnimeListTrend.root.setVisibilityGone()
+                        // Toast Message or Something
 
                     }
                 }
@@ -64,14 +73,21 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
         lifecycleScope.launchWhenStarted {
             animeVm.animeUiState.collect { uiState ->
                 when {
-                    uiState.data?.data?.isNotEmpty() == true -> {
-                        verticalAdapter.submitData(uiState.data)
-                        binding.contAnimeList.root.visibility = View.VISIBLE
-                    }
                     uiState.isLoading -> {
-
+                        binding.contShimAnimeList.root.setVisibilityVisible()
+                        binding.contAnimeList.root.setVisibilityGone()
+                    }
+                    uiState.data.isNotEmpty() -> {
+                        binding.contShimAnimeList.root.stopShimmer()
+                        binding.contShimAnimeList.root.setVisibilityGone()
+                        binding.contAnimeList.root.setVisibilityVisible()
+                        animeAdapter.submitData(uiState.data)
                     }
                     uiState.error.isNotEmpty() -> {
+                        binding.contShimAnimeList.root.stopShimmer()
+                        binding.contShimAnimeList.root.setVisibilityGone()
+                        binding.contAnimeList.root.setVisibilityGone()
+                        // Toast Message or Something
 
                     }
                 }

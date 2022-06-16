@@ -38,7 +38,7 @@ object BindingAdapter {
         val mapping = data?.relationships?.categories?.data
         mapping?.let {
             if (it.size > 1) {
-                view.text = mapping[0].id
+                view.text = "Category : ${mapping[0].id}"
             }
         }
     }
@@ -46,7 +46,7 @@ object BindingAdapter {
     @BindingAdapter("android:release")
     @JvmStatic
     fun releaseDate(view: AppCompatTextView, data: Attributes) {
-        view.text = data.startDate
+        view.text = "Release Date : ${data.startDate}"
     }
 
     @BindingAdapter("android:type")
@@ -81,7 +81,7 @@ object BindingAdapter {
     @JvmStatic
     fun animeTotalEpisode(view: AppCompatTextView, data: Attributes) {
         if (data.episodeCount != null) {
-            view.text = "${data.episodeCount} Episodes"
+            view.text = "Total Episodes : ${data.episodeCount} Episodes"
         } else view.text = "Ongoing"
     }
 
@@ -89,7 +89,7 @@ object BindingAdapter {
     @JvmStatic
     fun animeEpisodeLength(view: AppCompatTextView, data: Attributes) {
         if (data.episodeLength != null) {
-            view.text = "${data.episodeLength} Minutes"
+            view.text = "Duration : ${data.episodeLength} Minutes"
         } else view.text = "Duration Unknown"
     }
 

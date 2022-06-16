@@ -83,116 +83,65 @@
                 tools:text="Lorem Ipsum" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/category"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/nunito_bold"
-                android:text="Category"
-                android:textSize="15sp"
-                app:layout_constraintStart_toEndOf="@+id/imageAnimePoster"
-                app:layout_constraintTop_toBottomOf="@+id/textAnimeTitle" />
-
-            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textAnimeCategory"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:category="@{data}"
                 android:ellipsize="end"
                 android:fontFamily="@font/nunito_bold"
                 android:maxLines="1"
                 android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="@+id/textAnimeTitle"
-                app:layout_constraintStart_toEndOf="@+id/category"
-                app:layout_constraintTop_toTopOf="@id/category"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageAnimePoster"
+                app:layout_constraintTop_toBottomOf="@+id/textAnimeTitle"
                 tools:text="Lorem Ipsum" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/startdate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/nunito_bold"
-                android:text="Release Date"
-                app:layout_constraintStart_toStartOf="@+id/category"
-                app:layout_constraintTop_toBottomOf="@+id/category" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textAnimeReleaseDate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:ellipsize="end"
                 android:fontFamily="@font/nunito_bold"
                 android:maxLines="1"
                 android:release="@{data.attributes}"
-                app:layout_constraintEnd_toEndOf="@+id/textAnimeCategory"
-                app:layout_constraintStart_toEndOf="@+id/startdate"
-                app:layout_constraintTop_toTopOf="@+id/startdate"
-                tools:text="LoremIpsum" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textAnimeStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/shadow_text"
-                android:fontFamily="@font/nunito_black"
-                android:paddingHorizontal="8dp"
-                android:status="@{data.attributes}"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:text="Lorem Ipsum" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/duration"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/nunito_bold"
-                android:text="Duration"
-                app:layout_constraintStart_toStartOf="@+id/startdate"
-                app:layout_constraintTop_toBottomOf="@+id/startdate" />
+                app:layout_constraintStart_toStartOf="@+id/textAnimeCategory"
+                app:layout_constraintTop_toBottomOf="@+id/textAnimeCategory"
+                tools:text="LoremIpsum" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textAnimeDuration"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:ellipsize="end"
                 android:episode_length="@{data.attributes}"
                 android:fontFamily="@font/nunito_bold"
                 android:maxLines="1"
-                app:layout_constraintEnd_toEndOf="@+id/textAnimeReleaseDate"
-                app:layout_constraintStart_toEndOf="@+id/duration"
-                app:layout_constraintTop_toTopOf="@+id/duration"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textAnimeReleaseDate"
+                app:layout_constraintTop_toBottomOf="@+id/textAnimeReleaseDate"
                 tools:text="Lorem Ipsum" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/totalepisodes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/nunito_bold"
-                android:text="Total Episodes"
-                app:layout_constraintStart_toStartOf="@+id/duration"
-                app:layout_constraintTop_toBottomOf="@+id/duration" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textAnimeTotalEp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:ellipsize="end"
                 android:fontFamily="@font/nunito_bold"
                 android:maxLines="1"
                 android:total_episode="@{data.attributes}"
-                app:layout_constraintEnd_toEndOf="@+id/textAnimeDuration"
-                app:layout_constraintStart_toEndOf="@+id/totalepisodes"
-                app:layout_constraintTop_toTopOf="@+id/totalepisodes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textAnimeDuration"
+                app:layout_constraintTop_toBottomOf="@+id/textAnimeDuration"
                 tools:text="Lorem Ipsum" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -207,6 +156,20 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/imageAnimePoster"
                 app:layout_constraintStart_toStartOf="@+id/imageAnimePoster"
+                tools:text="Lorem Ipsum" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textAnimeStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/shadow_text"
+                android:fontFamily="@font/nunito_black"
+                android:paddingHorizontal="8dp"
+                android:status="@{data.attributes}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 tools:text="Lorem Ipsum" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

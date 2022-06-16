@@ -8,7 +8,14 @@
     <fragment
         android:id="@+id/animeFragment"
         android:name="com.kitsunime.presentation.anime.AnimeFragment"
-        android:label="fragment_anime"
+        android:label="Anime"
         tools:layout="@layout/fragment_anime" />
+
+
+    <fragment
+        android:id="@+id/mangaFragment"
+        android:name="com.kitsunime.presentation.manga.MangaFragment"
+        android:label="Manga"
+        tools:layout="@layout/fragment_manga" />
 
 </navigation>

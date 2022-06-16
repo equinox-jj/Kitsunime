@@ -34,16 +34,36 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <include
+                    android:id="@+id/contShimAnimeListTrend"
+                    layout="@layout/item_trending_placeholder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <androidx.constraintlayout.widget.Barrier
                     android:id="@+id/barrierOne"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:barrierDirection="bottom"
-                    app:constraint_referenced_ids="contAnimeListTrend" />
+                    app:constraint_referenced_ids="contAnimeListTrend, contShimAnimeListTrend" />
 
                 <include
                     android:id="@+id/contAnimeList"
                     layout="@layout/content_anime_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/barrierOne" />
+
+                <include
+                    android:id="@+id/contShimAnimeList"
+                    layout="@layout/item_list_placeholder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="gone"

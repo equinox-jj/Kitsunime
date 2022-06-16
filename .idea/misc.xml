@@ -5,13 +5,17 @@
       <map>
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/drawable/color_gradient.xml" value="0.131" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/drawable/ic_home.xml" value="0.131" />
+        <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/drawable/shadow_bottom.xml" value="0.131" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/drawable/shadow_text.xml" value="0.1" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/content_anime_list.xml" value="0.16" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/content_trending_anime_list.xml" value="0.2" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/fragment_anime.xml" value="0.1" />
+        <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/fragment_manga.xml" value="0.2" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_horizontal_list.xml" value="0.2" />
-        <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_vertical_list.xml" value="0.19895833333333332" />
+        <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_horizontal_placeholder.xml" value="0.2" />
+        <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_vertical_list.xml" value="0.25" />
+        <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_vertical_placeholder.xml" value="0.16" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/menu/bottom_nav_menu.xml" value="0.19692307692307692" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/menu/menu_bottom_nav.xml" value="0.19895833333333332" />
       </map>

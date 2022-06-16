@@ -33,7 +33,7 @@ class AnimeViewModel @Inject constructor(
         getAnimeTrendingListUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
-                    _trendingAnimeUiState.value = AnimeTrendingUiState(data = result.data)
+                    _trendingAnimeUiState.value = AnimeTrendingUiState(data = result.data ?: emptyList())
                 }
                 is Resource.Error -> {
                     _trendingAnimeUiState.value = AnimeTrendingUiState(error = result.message ?: "An unexpected error occurred.")
@@ -49,7 +49,7 @@ class AnimeViewModel @Inject constructor(
         getAnimeListUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
-                    _animeUiState.value = AnimeUiState(data = result.data)
+                    _animeUiState.value = AnimeUiState(data = result.data ?: emptyList())
                 }
                 is Resource.Error -> {
                     _animeUiState.value = AnimeUiState(error = result.message ?: "An unexpected error occurred.")

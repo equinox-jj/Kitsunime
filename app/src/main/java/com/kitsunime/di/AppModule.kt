@@ -60,7 +60,10 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRepository(animeService: AnimeService, mangaService: MangaService): IRepository {
+    fun provideRepository(
+        animeService: AnimeService,
+        mangaService: MangaService,
+    ): IRepository {
         return Repository(animeService, mangaService)
     }
 

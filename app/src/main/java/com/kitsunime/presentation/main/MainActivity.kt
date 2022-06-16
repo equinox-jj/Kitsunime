@@ -40,14 +40,14 @@ class MainActivity : AppCompatActivity() {
         }
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.homeFragment,
+                R.id.animeFragment,
                 R.id.mangaFragment,
                 R.id.discoverFragment,
                 R.id.favoriteFragment
             )
         )
         binding.bottomNav.setupWithNavController(navController)
-        setupActionBarWithNavController(navController)
+        setupActionBarWithNavController(navController, appBarConfiguration)
 
     }
 
