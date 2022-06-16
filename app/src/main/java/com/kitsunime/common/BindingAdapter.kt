@@ -1,6 +1,5 @@
 package com.kitsunime.common
 
-import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
@@ -9,7 +8,7 @@ import androidx.databinding.BindingAdapter
 import coil.load
 import com.google.android.material.imageview.ShapeableImageView
 import com.kitsunime.R
-import com.kitsunime.domain.model.animelist.*
+import com.kitsunime.data.remote.model.*
 
 object BindingAdapter {
 

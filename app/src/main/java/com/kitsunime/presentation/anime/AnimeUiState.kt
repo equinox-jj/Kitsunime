@@ -1,6 +1,6 @@
 package com.kitsunime.presentation.anime
 
-import com.kitsunime.domain.model.animelist.AnimeListResponse
+import com.kitsunime.data.remote.model.AnimeListResponse
 
 data class AnimeUiState(
     val isLoading: Boolean = false,

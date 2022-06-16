@@ -1,6 +1,6 @@
 package com.kitsunime.domain.repository
 
-import com.kitsunime.domain.model.animelist.AnimeListResponse
+import com.kitsunime.data.remote.model.AnimeListResponse
 
 interface IRepository {
 

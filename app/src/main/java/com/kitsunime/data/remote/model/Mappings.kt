@@ -1,9 +1,9 @@
-package com.kitsunime.domain.model.animelist
+package com.kitsunime.data.remote.model
 
 
 import com.google.gson.annotations.SerializedName
 
-data class Manga(
+data class Mappings(
     @SerializedName("links")
     val links: Links?
 )

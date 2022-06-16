@@ -1,9 +1,9 @@
-package com.kitsunime.domain.model.animelist
+package com.kitsunime.data.remote.model
 
 
 import com.google.gson.annotations.SerializedName
 
-data class Data(
+data class Included(
     @SerializedName("attributes")
     val attributes: Attributes?,
     @SerializedName("id")

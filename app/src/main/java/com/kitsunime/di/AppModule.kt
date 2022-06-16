@@ -2,6 +2,7 @@ package com.kitsunime.di
 
 import com.kitsunime.common.Constants.BASE_URL
 import com.kitsunime.data.remote.AnimeService
+import com.kitsunime.data.remote.MangaService
 import com.kitsunime.data.repository.Repository
 import com.kitsunime.domain.repository.IRepository
 import dagger.Module
@@ -51,10 +52,16 @@ object AppModule {
         return retrofit.create(AnimeService::class.java)
     }
 
+    @Singleton
+    @Provides
+    fun providesMangaServices(retrofit: Retrofit): MangaService {
+        return retrofit.create(MangaService::class.java)
+    }
+
     @Provides
     @Singleton
-    fun provideRepository(animeService: AnimeService): IRepository {
-        return Repository(animeService)
+    fun provideRepository(animeService: AnimeService, mangaService: MangaService): IRepository {
+        return Repository(animeService, mangaService)
     }
 
 }

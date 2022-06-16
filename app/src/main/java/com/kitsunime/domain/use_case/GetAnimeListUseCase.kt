@@ -1,7 +1,7 @@
 package com.kitsunime.domain.use_case
 
 import com.kitsunime.common.Resource
-import com.kitsunime.domain.model.animelist.AnimeListResponse
+import com.kitsunime.data.remote.model.AnimeListResponse
 import com.kitsunime.domain.repository.IRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

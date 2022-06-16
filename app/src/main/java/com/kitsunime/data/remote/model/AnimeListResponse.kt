@@ -1,4 +1,4 @@
-package com.kitsunime.domain.model.animelist
+package com.kitsunime.data.remote.model
 
 
 import com.google.gson.annotations.SerializedName

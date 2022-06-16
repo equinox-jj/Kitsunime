@@ -1,4 +1,4 @@
-package com.kitsunime.domain.model.animelist
+package com.kitsunime.data.remote.model
 
 
 import com.google.gson.annotations.SerializedName
@@ -38,7 +38,6 @@ data class Attributes(
     val popularityRank: Int?,
     @SerializedName("posterImage")
     val posterImage: PosterImage?,
-
     @SerializedName("ratingRank")
     val ratingRank: Int?,
     @SerializedName("showType")

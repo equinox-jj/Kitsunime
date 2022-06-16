@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.kitsunime.common.DiffUtils
+import com.kitsunime.data.remote.model.AnimeListResponse
+import com.kitsunime.data.remote.model.Data
 import com.kitsunime.databinding.ItemHorizontalListBinding
-import com.kitsunime.domain.model.animelist.AnimeListResponse
-import com.kitsunime.domain.model.animelist.Data
 
 class HorizontalAdapter : RecyclerView.Adapter<HorizontalAdapter.HorizontalViewHolder>() {
 

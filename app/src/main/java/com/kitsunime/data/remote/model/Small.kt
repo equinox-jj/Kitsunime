@@ -1,9 +1,9 @@
-package com.kitsunime.domain.model.animelist
+package com.kitsunime.data.remote.model
 
 
 import com.google.gson.annotations.SerializedName
 
-data class Tiny(
+data class Small(
     @SerializedName("height")
     val height: Int?,
     @SerializedName("width")
