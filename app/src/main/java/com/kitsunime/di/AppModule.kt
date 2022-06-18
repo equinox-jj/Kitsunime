@@ -1,13 +1,18 @@
 package com.kitsunime.di
 
+import android.content.Context
+import androidx.room.Room
 import com.kitsunime.common.Constants.BASE_URL
-import com.kitsunime.data.remote.AnimeService
-import com.kitsunime.data.remote.MangaService
+import com.kitsunime.common.Constants.KITSU_DATABASE
+import com.kitsunime.data.local.KitsuDao
+import com.kitsunime.data.local.KitsuDatabase
+import com.kitsunime.data.remote.KitsuService
 import com.kitsunime.data.repository.Repository
 import com.kitsunime.domain.repository.IRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -18,6 +23,8 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+    // NETWORK / RETROFIT
     @Singleton
     @Provides
     fun providesHttpClient(): OkHttpClient {
@@ -48,23 +55,32 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providesAnimeServices(retrofit: Retrofit): AnimeService {
-        return retrofit.create(AnimeService::class.java)
+    fun providesAnimeServices(retrofit: Retrofit): KitsuService {
+        return retrofit.create(KitsuService::class.java)
     }
+
+    // DATABASE
+    @Singleton
+    @Provides
+    fun provideDatabase(
+        @ApplicationContext context: Context,
+    ) = Room.databaseBuilder(
+        context,
+        KitsuDatabase::class.java,
+        KITSU_DATABASE
+    ).build()
 
     @Singleton
     @Provides
-    fun providesMangaServices(retrofit: Retrofit): MangaService {
-        return retrofit.create(MangaService::class.java)
-    }
+    fun kitsuDao(database: KitsuDatabase) = database.kitsuDao()
 
     @Provides
     @Singleton
     fun provideRepository(
-        animeService: AnimeService,
-        mangaService: MangaService,
+        kitsuService: KitsuService,
+        kitsuDao: KitsuDao,
     ): IRepository {
-        return Repository(animeService, mangaService)
+        return Repository(kitsuService, kitsuDao)
     }
 
 }

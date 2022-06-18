@@ -1,6 +1,5 @@
 package com.kitsunime.presentation.anime
 
-import com.kitsunime.data.remote.model.AnimeListResponse
 import com.kitsunime.data.remote.model.Data
 
 data class AnimeUiState(

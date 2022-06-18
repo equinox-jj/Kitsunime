@@ -12,6 +12,8 @@ import com.kitsunime.databinding.FragmentAnimeBinding
 import com.kitsunime.presentation.anime.adapter.AnimeAdapter
 import com.kitsunime.presentation.anime.adapter.AnimeTrendingAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class AnimeFragment : Fragment(R.layout.fragment_anime) {
@@ -44,7 +46,7 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
     }
 
     private fun observeAnimeTrending() {
-        lifecycleScope.launchWhenStarted {
+        lifecycleScope.launch(Dispatchers.IO) {
             animeVm.trendingAnimeUiState.collect { uiState ->
                 when {
                     uiState.isLoading -> {
@@ -61,8 +63,6 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
                         binding.contShimAnimeListTrend.root.stopShimmer()
                         binding.contShimAnimeListTrend.root.setVisibilityGone()
                         binding.contAnimeListTrend.root.setVisibilityGone()
-                        // Toast Message or Something
-
                     }
                 }
             }
@@ -70,7 +70,7 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
     }
 
     private fun observeAnime() {
-        lifecycleScope.launchWhenStarted {
+        lifecycleScope.launch(Dispatchers.IO) {
             animeVm.animeUiState.collect { uiState ->
                 when {
                     uiState.isLoading -> {
@@ -87,8 +87,6 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
                         binding.contShimAnimeList.root.stopShimmer()
                         binding.contShimAnimeList.root.setVisibilityGone()
                         binding.contAnimeList.root.setVisibilityGone()
-                        // Toast Message or Something
-
                     }
                 }
             }
