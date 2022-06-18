@@ -35,7 +35,6 @@ class AnimeViewModel @Inject constructor(
                 is Resource.Success -> {
                     _trendingAnimeUiState.value =
                         AnimeTrendingUiState(isLoading = false, data = result.data ?: emptyList())
-//                        trendingAnimeUiState.value.copy(isLoading = false, data = result.data ?: emptyList())
                 }
                 is Resource.Error -> {
                     _trendingAnimeUiState.value = AnimeTrendingUiState(
@@ -43,12 +42,10 @@ class AnimeViewModel @Inject constructor(
                         data = result.data ?: emptyList(),
                         error = result.message ?: "An unexpected error occurred."
                     )
-//                        trendingAnimeUiState.value.copy(isLoading = false, data = result.data ?: emptyList())
                 }
                 is Resource.Loading -> {
                     _trendingAnimeUiState.value =
                         AnimeTrendingUiState(isLoading = true, data = result.data ?: emptyList())
-//                        trendingAnimeUiState.value.copy(isLoading = true, data = result.data ?: emptyList())
                 }
             }
         }.launchIn(viewModelScope)

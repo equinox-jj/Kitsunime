@@ -28,5 +28,4 @@ interface KitsuDao {
 
     @Query("DELETE FROM anime_entity WHERE id IN(:ids)")
     suspend fun deleteAnimeIdsDao(ids: List<String>)
-
 }

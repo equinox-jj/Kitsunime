@@ -12,7 +12,6 @@ import com.kitsunime.databinding.FragmentAnimeBinding
 import com.kitsunime.presentation.anime.adapter.AnimeAdapter
 import com.kitsunime.presentation.anime.adapter.AnimeTrendingAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -46,7 +45,7 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
     }
 
     private fun observeAnimeTrending() {
-        lifecycleScope.launch(Dispatchers.IO) {
+        lifecycleScope.launch {
             animeVm.trendingAnimeUiState.collect { uiState ->
                 when {
                     uiState.isLoading -> {
@@ -70,7 +69,7 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
     }
 
     private fun observeAnime() {
-        lifecycleScope.launch(Dispatchers.IO) {
+        lifecycleScope.launch {
             animeVm.animeUiState.collect { uiState ->
                 when {
                     uiState.isLoading -> {
