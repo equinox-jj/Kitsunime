@@ -22,7 +22,8 @@ class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeListVH>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimeListVH {
-        val binding = ItemAnimeListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemAnimeListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return AnimeListVH(binding)
     }
 

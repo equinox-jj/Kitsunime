@@ -22,7 +22,8 @@ class AnimeTrendingAdapter : RecyclerView.Adapter<AnimeTrendingAdapter.AnimeTren
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimeTrendingVH {
-        val binding = ItemAnimeTrendingListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemAnimeTrendingListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return AnimeTrendingVH(binding)
     }
 

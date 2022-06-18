@@ -5,5 +5,5 @@ import com.kitsunime.data.remote.model.Data
 data class AnimeUiState(
     val isLoading: Boolean = false,
     val data: List<Data> = emptyList(),
-    val error: String = ""
+    val error: String = "",
 )

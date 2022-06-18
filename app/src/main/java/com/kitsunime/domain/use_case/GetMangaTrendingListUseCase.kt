@@ -10,7 +10,7 @@ import java.io.IOException
 import javax.inject.Inject
 
 class GetMangaTrendingListUseCase @Inject constructor(
-    private val repository: Repository
+    private val repository: Repository,
 ) {
 
     operator fun invoke(): Flow<Resource<List<Data>>> = flow {
@@ -22,7 +22,8 @@ class GetMangaTrendingListUseCase @Inject constructor(
         } catch (e: HttpException) {
             emit(Resource.Error(e.localizedMessage ?: "An unexpected error occurred."))
         } catch (e: IOException) {
-            emit(Resource.Error(e.localizedMessage ?: "Couldn't reach server. Check your internet connection."))
+            emit(Resource.Error(e.localizedMessage
+                ?: "Couldn't reach server. Check your internet connection."))
         }
 
     }

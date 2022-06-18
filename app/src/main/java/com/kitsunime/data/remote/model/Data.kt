@@ -19,6 +19,7 @@ data class Data(
             type = type
         )
     }
+
     fun toAnimeEntity(): AnimeEntity {
         return AnimeEntity(
             id = id,

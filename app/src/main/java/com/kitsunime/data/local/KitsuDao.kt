@@ -13,19 +13,19 @@ interface KitsuDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAnimeTrendingDao(animeTrendingEntity: List<AnimeTrendingEntity>)
 
-    @Query("SELECT * FROM anime_trending_entity")
+    @Query("SELECT * FROM anime_trending_table")
     suspend fun getAnimeTrendingDao(): List<AnimeTrendingEntity>
 
-    @Query("DELETE FROM anime_trending_entity WHERE id IN(:ids)")
+    @Query("DELETE FROM anime_trending_table WHERE id IN(:ids)")
     suspend fun deleteAnimeTrendingIdsDao(ids: List<String>)
 
     // Anime
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAnimeDao(animeTrendingEntity: List<AnimeEntity>)
 
-    @Query("SELECT * FROM anime_entity")
+    @Query("SELECT * FROM anime_table")
     suspend fun getAnimeDao(): List<AnimeEntity>
 
-    @Query("DELETE FROM anime_entity WHERE id IN(:ids)")
+    @Query("DELETE FROM anime_table WHERE id IN(:ids)")
     suspend fun deleteAnimeIdsDao(ids: List<String>)
 }

@@ -1,13 +1,16 @@
 package com.kitsunime.domain.repository
 
+import com.kitsunime.common.Resource
 import com.kitsunime.data.local.entity.AnimeEntity
 import com.kitsunime.data.local.entity.AnimeTrendingEntity
 import com.kitsunime.data.remote.model.AnimeListResponse
+import com.kitsunime.data.remote.model.Data
+import kotlinx.coroutines.flow.Flow
 
 interface IRepository {
 
-    suspend fun getAnimeTrendingList(): AnimeListResponse
-    suspend fun getAnimeList(): AnimeListResponse
+    fun getAnimeTrendingList(): Flow<Resource<List<Data>>>
+    fun getAnimeList(): Flow<Resource<List<Data>>>
     suspend fun getMangaTrendingList(): AnimeListResponse
     suspend fun getMangaList(): AnimeListResponse
 
