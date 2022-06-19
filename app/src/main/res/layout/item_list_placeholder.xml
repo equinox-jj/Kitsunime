@@ -16,7 +16,7 @@
             android:layout_height="25dp"
             android:layout_margin="8dp"
             android:scaleType="fitXY"
-            android:src="@color/black"
+            android:src="@color/shimmer_grey"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:riv_corner_radius="16dp" />
@@ -27,7 +27,7 @@
             android:layout_height="250dp"
             android:layout_margin="8dp"
             android:scaleType="fitXY"
-            android:src="@color/black"
+            android:src="@color/shimmer_grey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/shOne"

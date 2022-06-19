@@ -12,8 +12,14 @@
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/content_trending_anime_list.xml" value="0.2" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/fragment_anime.xml" value="0.1" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/fragment_manga.xml" value="0.2" />
+        <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_anime_list.xml" value="0.2" />
+        <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_anime_trending_list.xml" value="0.2" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_horizontal_list.xml" value="0.2" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_horizontal_placeholder.xml" value="0.2" />
+        <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_list_placeholder.xml" value="0.2" />
+        <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_manga_list.xml" value="0.4140625" />
+        <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_manga_trending_list.xml" value="0.16324786324786325" />
+        <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_trending_placeholder.xml" value="0.2" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_vertical_list.xml" value="0.25" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_vertical_placeholder.xml" value="0.16" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/menu/bottom_nav_menu.xml" value="0.19692307692307692" />
