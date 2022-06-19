@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
+    <kitsuResults>
 
         <variable
-            name="data"
-            type="com.kitsunime.data.remote.model.Data" />
-    </data>
+            name="kitsuResults"
+            type="com.kitsunime.kitsuResults.remote.model.KitsuResults" />
+    </kitsuResults>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"

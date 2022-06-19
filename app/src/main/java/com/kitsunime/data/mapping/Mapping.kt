@@ -4,9 +4,9 @@ import com.kitsunime.data.local.entity.AnimeEntity
 import com.kitsunime.data.local.entity.AnimeTrendingEntity
 import com.kitsunime.data.local.entity.MangaEntity
 import com.kitsunime.data.local.entity.MangaTrendingEntity
-import com.kitsunime.data.remote.model.Data
+import com.kitsunime.data.remote.model.KitsuResults
 
-fun Data.toAnimeTrendingEntity(): AnimeTrendingEntity {
+fun KitsuResults.toAnimeTrendingEntity(): AnimeTrendingEntity {
     return AnimeTrendingEntity(
         id = id,
         attributes = attributes,
@@ -15,8 +15,8 @@ fun Data.toAnimeTrendingEntity(): AnimeTrendingEntity {
     )
 }
 
-fun AnimeTrendingEntity.toAnimeTrending(): Data {
-    return Data(
+fun AnimeTrendingEntity.toAnimeTrending(): KitsuResults {
+    return KitsuResults(
         attributes = attributes,
         id = id,
         relationships = relationships,
@@ -24,7 +24,7 @@ fun AnimeTrendingEntity.toAnimeTrending(): Data {
     )
 }
 
-fun Data.toAnimeEntity(): AnimeEntity {
+fun KitsuResults.toAnimeEntity(): AnimeEntity {
     return AnimeEntity(
         id = id,
         attributes = attributes,
@@ -33,8 +33,8 @@ fun Data.toAnimeEntity(): AnimeEntity {
     )
 }
 
-fun AnimeEntity.toAnime(): Data {
-    return Data(
+fun AnimeEntity.toAnime(): KitsuResults {
+    return KitsuResults(
         attributes = attributes,
         id = id,
         relationships = relationships,
@@ -42,7 +42,7 @@ fun AnimeEntity.toAnime(): Data {
     )
 }
 
-fun Data.toMangaTrendingEntity(): MangaTrendingEntity {
+fun KitsuResults.toMangaTrendingEntity(): MangaTrendingEntity {
     return MangaTrendingEntity(
         id = id,
         attributes = attributes,
@@ -51,8 +51,8 @@ fun Data.toMangaTrendingEntity(): MangaTrendingEntity {
     )
 }
 
-fun MangaTrendingEntity.toMangaTrending(): Data {
-    return Data(
+fun MangaTrendingEntity.toMangaTrending(): KitsuResults {
+    return KitsuResults(
         attributes = attributes,
         id = id,
         relationships = relationships,
@@ -60,7 +60,7 @@ fun MangaTrendingEntity.toMangaTrending(): Data {
     )
 }
 
-fun Data.toMangaEntity(): MangaEntity {
+fun KitsuResults.toMangaEntity(): MangaEntity {
     return MangaEntity(
         id = id,
         attributes = attributes,
@@ -69,8 +69,8 @@ fun Data.toMangaEntity(): MangaEntity {
     )
 }
 
-fun MangaEntity.toManga(): Data {
-    return Data(
+fun MangaEntity.toManga(): KitsuResults {
+    return KitsuResults(
         attributes = attributes,
         id = id,
         relationships = relationships,

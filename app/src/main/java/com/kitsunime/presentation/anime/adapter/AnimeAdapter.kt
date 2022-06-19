@@ -7,16 +7,16 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.kitsunime.R
 import com.kitsunime.common.DiffUtils
-import com.kitsunime.data.remote.model.Data
+import com.kitsunime.data.remote.model.KitsuResults
 import com.kitsunime.databinding.ItemAnimeListBinding
 
 class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeListVH>() {
 
-    private var animeResult = listOf<Data>()
+    private var animeResult = listOf<KitsuResults>()
 
     inner class AnimeListVH(private val binding: ItemAnimeListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(animeResult: Data) {
+        fun bind(animeResult: KitsuResults) {
             binding.apply {
                 val coverImage = animeResult.attributes.coverImage
                 val posterImage = animeResult.attributes.posterImage
@@ -56,7 +56,7 @@ class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeListVH>() {
 
     override fun getItemCount(): Int = animeResult.size
 
-    fun submitData(newData: List<Data>) {
+    fun submitData(newData: List<KitsuResults>) {
         val animeDiffUtil = DiffUtils(animeResult, newData)
         val diffUtil = DiffUtil.calculateDiff(animeDiffUtil)
         animeResult = newData

@@ -5,15 +5,15 @@ import com.kitsunime.data.local.entity.AnimeEntity
 import com.kitsunime.data.local.entity.AnimeTrendingEntity
 import com.kitsunime.data.local.entity.MangaEntity
 import com.kitsunime.data.local.entity.MangaTrendingEntity
-import com.kitsunime.data.remote.model.Data
+import com.kitsunime.data.remote.model.KitsuResults
 import kotlinx.coroutines.flow.Flow
 
 interface IRepository {
 
-    fun getAnimeTrendingList(): Flow<Resource<List<Data>>>
-    fun getAnimeList(): Flow<Resource<List<Data>>>
-    fun getMangaTrendingList(): Flow<Resource<List<Data>>>
-    fun getMangaList(): Flow<Resource<List<Data>>>
+    fun getAnimeTrendingList(): Flow<Resource<List<KitsuResults>>>
+    fun getAnimeList(): Flow<Resource<List<KitsuResults>>>
+    fun getMangaTrendingList(): Flow<Resource<List<KitsuResults>>>
+    fun getMangaList(): Flow<Resource<List<KitsuResults>>>
 
     suspend fun insertAnimeTrendingDao(animeTrendingEntity: List<AnimeTrendingEntity>)
     suspend fun getAnimeTrendingDao(): List<AnimeTrendingEntity>

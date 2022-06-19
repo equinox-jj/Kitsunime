@@ -34,8 +34,8 @@ object BindingAdapter {
 
     @BindingAdapter("android:category")
     @JvmStatic
-    fun category(view: AppCompatTextView, data: Data?) {
-        val mapping = data?.relationships?.categories?.data
+    fun category(view: AppCompatTextView, kitsuResults: KitsuResults?) {
+        val mapping = kitsuResults?.relationships?.categories?.data
         mapping?.let {
             if (it.size > 1) {
                 view.text = "Category : ${mapping[0].id}"

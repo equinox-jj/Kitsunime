@@ -8,7 +8,7 @@ import com.kitsunime.data.local.entity.MangaEntity
 import com.kitsunime.data.local.entity.MangaTrendingEntity
 import com.kitsunime.data.mapping.*
 import com.kitsunime.data.remote.KitsuService
-import com.kitsunime.data.remote.model.Data
+import com.kitsunime.data.remote.model.KitsuResults
 import com.kitsunime.domain.repository.IRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -22,7 +22,7 @@ class Repository @Inject constructor(
 ) : IRepository {
 
     // Remote Repository
-    override fun getAnimeTrendingList(): Flow<Resource<List<Data>>> = flow {
+    override fun getAnimeTrendingList(): Flow<Resource<List<KitsuResults>>> = flow {
         emit(Resource.Loading())
 
         val kitsuDao = dao.getAnimeTrendingDao().map { it.toAnimeTrending() }
@@ -42,7 +42,7 @@ class Repository @Inject constructor(
         emit(Resource.Success(newKitsuDao))
     }
 
-    override fun getAnimeList(): Flow<Resource<List<Data>>> = flow {
+    override fun getAnimeList(): Flow<Resource<List<KitsuResults>>> = flow {
         emit(Resource.Loading())
 
         val kitsuDao = dao.getAnimeDao().map { it.toAnime() }
@@ -62,7 +62,7 @@ class Repository @Inject constructor(
         emit(Resource.Success(newKitsuDao))
     }
 
-    override fun getMangaTrendingList(): Flow<Resource<List<Data>>> = flow {
+    override fun getMangaTrendingList(): Flow<Resource<List<KitsuResults>>> = flow {
         emit(Resource.Loading())
 
         val kitsuDao = dao.getMangaTrendingDao().map { it.toMangaTrending() }
@@ -82,7 +82,7 @@ class Repository @Inject constructor(
         emit(Resource.Success(newKitsuDao))
     }
 
-    override fun getMangaList(): Flow<Resource<List<Data>>> = flow {
+    override fun getMangaList(): Flow<Resource<List<KitsuResults>>> = flow {
         emit(Resource.Loading())
 
         val kitsuDao = dao.getMangaDao().map { it.toManga() }
