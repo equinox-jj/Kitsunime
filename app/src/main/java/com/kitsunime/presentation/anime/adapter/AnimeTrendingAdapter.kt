@@ -22,7 +22,7 @@ class AnimeTrendingAdapter : RecyclerView.Adapter<AnimeTrendingAdapter.AnimeTren
                 val totalEp = animeResult.attributes.episodeCount
 
                 imageAnimePoster.load(posterImage?.small) {
-                    crossfade(500)
+                    crossfade(800)
                     error(R.drawable.color_gradient)
                 }
                 textAnimeTitle.isSelected = true

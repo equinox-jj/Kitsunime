@@ -2,7 +2,6 @@ package com.kitsunime.data.remote.model
 
 
 import com.google.gson.annotations.SerializedName
-import com.kitsunime.domain.model.KitsuAttributes
 
 data class Attributes(
     @SerializedName("averageRating") val averageRating: String?,
@@ -19,20 +18,3 @@ data class Attributes(
     @SerializedName("serialization") val serialization: String?,
 
     )
-
-fun Attributes.toKitsuAttributes(): KitsuAttributes {
-    return KitsuAttributes(
-        averageRating = averageRating,
-        canonicalTitle = canonicalTitle,
-        coverImage = coverImage,
-        episodeCount = episodeCount,
-        episodeLength = episodeLength,
-        posterImage = posterImage,
-        startDate = startDate,
-        status = status,
-        subtype = subtype,
-        chapterCount = chapterCount,
-        volumeCount = volumeCount,
-        serialization = serialization
-    )
-}

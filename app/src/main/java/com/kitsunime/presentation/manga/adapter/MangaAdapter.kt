@@ -2,7 +2,9 @@ package com.kitsunime.presentation.manga.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.kitsunime.common.DiffUtils
 import com.kitsunime.data.remote.model.Data
 import com.kitsunime.databinding.ItemAnimeListBinding
 
@@ -28,5 +30,11 @@ class MangaAdapter : RecyclerView.Adapter<MangaAdapter.MangaViewHolder>() {
 
     override fun getItemCount(): Int = mangaResult.size
 
+    fun submitData(newData: List<Data>) {
+        val animeDiffUtil = DiffUtils(mangaResult, newData)
+        val diffUtil = DiffUtil.calculateDiff(animeDiffUtil)
+        mangaResult = newData
+        diffUtil.dispatchUpdatesTo(this)
+    }
 
 }

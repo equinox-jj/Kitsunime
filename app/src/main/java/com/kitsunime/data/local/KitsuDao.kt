@@ -6,10 +6,12 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.kitsunime.data.local.entity.AnimeEntity
 import com.kitsunime.data.local.entity.AnimeTrendingEntity
+import com.kitsunime.data.local.entity.MangaEntity
+import com.kitsunime.data.local.entity.MangaTrendingEntity
 
 @Dao
 interface KitsuDao {
-    // Anime Trending
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAnimeTrendingDao(animeTrendingEntity: List<AnimeTrendingEntity>)
 
@@ -19,7 +21,6 @@ interface KitsuDao {
     @Query("DELETE FROM anime_trending_table WHERE id IN(:ids)")
     suspend fun deleteAnimeTrendingIdsDao(ids: List<String>)
 
-    // Anime
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAnimeDao(animeTrendingEntity: List<AnimeEntity>)
 
@@ -28,4 +29,23 @@ interface KitsuDao {
 
     @Query("DELETE FROM anime_table WHERE id IN(:ids)")
     suspend fun deleteAnimeIdsDao(ids: List<String>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertMangaTrendingDao(animeTrendingEntity: List<MangaTrendingEntity>)
+
+    @Query("SELECT * FROM manga_trending_table")
+    suspend fun getMangaTrendingDao(): List<MangaTrendingEntity>
+
+    @Query("DELETE FROM manga_trending_table WHERE id IN(:ids)")
+    suspend fun deleteMangaTrendingIdsDao(ids: List<String>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertMangaDao(animeTrendingEntity: List<MangaEntity>)
+
+    @Query("SELECT * FROM manga_table")
+    suspend fun getMangaDao(): List<MangaEntity>
+
+    @Query("DELETE FROM manga_table WHERE id IN(:ids)")
+    suspend fun deleteMangaIdsDao(ids: List<String>)
+
 }

@@ -4,8 +4,10 @@ import com.kitsunime.common.Resource
 import com.kitsunime.data.local.KitsuDao
 import com.kitsunime.data.local.entity.AnimeEntity
 import com.kitsunime.data.local.entity.AnimeTrendingEntity
+import com.kitsunime.data.local.entity.MangaEntity
+import com.kitsunime.data.local.entity.MangaTrendingEntity
+import com.kitsunime.data.mapping.*
 import com.kitsunime.data.remote.KitsuService
-import com.kitsunime.data.remote.model.AnimeListResponse
 import com.kitsunime.data.remote.model.Data
 import com.kitsunime.domain.repository.IRepository
 import kotlinx.coroutines.flow.Flow
@@ -23,23 +25,19 @@ class Repository @Inject constructor(
     override fun getAnimeTrendingList(): Flow<Resource<List<Data>>> = flow {
         emit(Resource.Loading())
 
-        // Read The Current Data from Database
         val kitsuDao = dao.getAnimeTrendingDao().map { it.toAnimeTrending() }
         emit(Resource.Loading(data = kitsuDao))
 
         try {
-            val remoteResponse = api.getTrendingAnimeList().data // Initiate Api Call
-            dao.deleteAnimeTrendingIdsDao(remoteResponse.map { it.id }) // Delete The Anime Data From ROOM
-            dao.insertAnimeTrendingDao(remoteResponse.map { it.toAnimeTrendingEntity() }) // Replace With New Anime Data
+            val remoteResponse = api.getTrendingAnimeList().data
+            dao.deleteAnimeTrendingIdsDao(remoteResponse.map { it.id })
+            dao.insertAnimeTrendingDao(remoteResponse.map { it.toAnimeTrendingEntity() })
         } catch (e: HttpException) {
-            emit(Resource.Error(message = e.localizedMessage ?: "An unexpected error occurred.",
-                data = kitsuDao))
+            emit(Resource.Error(message = e.localizedMessage ?: "An unexpected error occurred.", data = kitsuDao))
         } catch (e: IOException) {
-            emit(Resource.Error(message = e.localizedMessage ?: "No Internet Connection.",
-                data = kitsuDao))
+            emit(Resource.Error(message = e.localizedMessage ?: "No Internet Connection.", data = kitsuDao))
         }
 
-        // Emit The Data To UI Layer
         val newKitsuDao = dao.getAnimeTrendingDao().map { it.toAnimeTrending() }
         emit(Resource.Success(newKitsuDao))
     }
@@ -55,23 +53,53 @@ class Repository @Inject constructor(
             dao.deleteAnimeIdsDao(remoteResponse.map { it.id })
             dao.insertAnimeDao(remoteResponse.map { it.toAnimeEntity() })
         } catch (e: HttpException) {
-            emit(Resource.Error(message = e.localizedMessage ?: "An unexpected error occurred.",
-                data = kitsuDao))
+            emit(Resource.Error(message = e.localizedMessage ?: "An unexpected error occurred.", data = kitsuDao))
         } catch (e: IOException) {
-            emit(Resource.Error(message = e.localizedMessage ?: "No Internet Connection",
-                data = kitsuDao))
+            emit(Resource.Error(message = e.localizedMessage ?: "No Internet Connection", data = kitsuDao))
         }
 
         val newKitsuDao = dao.getAnimeDao().map { it.toAnime() }
         emit(Resource.Success(newKitsuDao))
     }
 
-    override suspend fun getMangaTrendingList(): AnimeListResponse {
-        return api.getTrendingMangaList()
+    override fun getMangaTrendingList(): Flow<Resource<List<Data>>> = flow {
+        emit(Resource.Loading())
+
+        val kitsuDao = dao.getMangaTrendingDao().map { it.toMangaTrending() }
+        emit(Resource.Loading(data = kitsuDao))
+
+        try {
+            val remoteResponse = api.getTrendingMangaList().data
+            dao.deleteMangaTrendingIdsDao(remoteResponse.map { it.id })
+            dao.insertMangaTrendingDao(remoteResponse.map { it.toMangaTrendingEntity() })
+        } catch (e: HttpException) {
+            emit(Resource.Error(message = e.localizedMessage ?: "An unexpected error occurred.", data = kitsuDao))
+        } catch (e: IOException) {
+            emit(Resource.Error(message = e.localizedMessage ?: "No Internet Connection", data = kitsuDao))
+        }
+
+        val newKitsuDao = dao.getMangaTrendingDao().map { it.toMangaTrending() }
+        emit(Resource.Success(newKitsuDao))
     }
 
-    override suspend fun getMangaList(): AnimeListResponse {
-        return api.getMangaList()
+    override fun getMangaList(): Flow<Resource<List<Data>>> = flow {
+        emit(Resource.Loading())
+
+        val kitsuDao = dao.getMangaDao().map { it.toManga() }
+        emit(Resource.Loading(data = kitsuDao))
+
+        try {
+            val remoteResponse = api.getMangaList().data
+            dao.deleteMangaIdsDao(remoteResponse.map { it.id })
+            dao.insertMangaDao(remoteResponse.map { it.toMangaEntity() })
+        } catch (e: HttpException) {
+            emit(Resource.Error(message = e.localizedMessage ?: "An unexpected error occurred.", data = kitsuDao))
+        } catch (e: IOException) {
+            emit(Resource.Error(message = e.localizedMessage ?: "No Internet Connection", data = kitsuDao))
+        }
+
+        val newKitsuDao = dao.getMangaDao().map { it.toManga() }
+        emit(Resource.Success(newKitsuDao))
     }
 
     // Local Repository
@@ -97,6 +125,30 @@ class Repository @Inject constructor(
 
     override suspend fun deleteAnimeIdsDao(ids: List<String>) {
         return dao.deleteAnimeIdsDao(ids)
+    }
+
+    override suspend fun insertMangaTrendingDao(mangaTrendingEntity: List<MangaTrendingEntity>) {
+        return dao.insertMangaTrendingDao(mangaTrendingEntity)
+    }
+
+    override suspend fun getMangaTrendingDao(): List<MangaTrendingEntity> {
+        return dao.getMangaTrendingDao()
+    }
+
+    override suspend fun deleteMangaTrendingIdsDao(ids: List<String>) {
+        return dao.deleteMangaTrendingIdsDao(ids)
+    }
+
+    override suspend fun insertMangaDao(mangaEntity: List<MangaEntity>) {
+        return dao.insertMangaDao(mangaEntity)
+    }
+
+    override suspend fun getMangaDao(): List<MangaEntity> {
+        return dao.getMangaDao()
+    }
+
+    override suspend fun deleteMangaIdsDao(ids: List<String>) {
+        return dao.deleteMangaIdsDao(ids)
     }
 
 }

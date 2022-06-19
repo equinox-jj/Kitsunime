@@ -33,19 +33,13 @@ class AnimeViewModel @Inject constructor(
         getAnimeTrendingListUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
-                    _trendingAnimeUiState.value =
-                        AnimeTrendingUiState(isLoading = false, data = result.data ?: emptyList())
+                    _trendingAnimeUiState.value = AnimeTrendingUiState(isLoading = false, data = result.data ?: emptyList())
                 }
                 is Resource.Error -> {
-                    _trendingAnimeUiState.value = AnimeTrendingUiState(
-                        isLoading = false,
-                        data = result.data ?: emptyList(),
-                        error = result.message ?: "An unexpected error occurred."
-                    )
+                    _trendingAnimeUiState.value = AnimeTrendingUiState(isLoading = false, data = result.data ?: emptyList(), error = result.message ?: "An unexpected error occurred.")
                 }
                 is Resource.Loading -> {
-                    _trendingAnimeUiState.value =
-                        AnimeTrendingUiState(isLoading = true, data = result.data ?: emptyList())
+                    _trendingAnimeUiState.value = AnimeTrendingUiState(isLoading = true, data = result.data ?: emptyList())
                 }
             }
         }.launchIn(viewModelScope)
@@ -55,19 +49,13 @@ class AnimeViewModel @Inject constructor(
         getAnimeListUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
-                    _animeUiState.value =
-                        AnimeUiState(isLoading = false, data = result.data ?: emptyList())
+                    _animeUiState.value = AnimeUiState(isLoading = false, data = result.data ?: emptyList())
                 }
                 is Resource.Error -> {
-                    _animeUiState.value = AnimeUiState(
-                        isLoading = false,
-                        data = result.data ?: emptyList(),
-                        error = result.message ?: "An unexpected error occurred."
-                    )
+                    _animeUiState.value = AnimeUiState(isLoading = false, data = result.data ?: emptyList(), error = result.message ?: "An unexpected error occurred.")
                 }
                 is Resource.Loading -> {
-                    _animeUiState.value =
-                        AnimeUiState(isLoading = true, data = result.data ?: emptyList())
+                    _animeUiState.value = AnimeUiState(isLoading = true, data = result.data ?: emptyList())
                 }
             }
         }.launchIn(viewModelScope)

@@ -26,11 +26,11 @@ class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeListVH>() {
                 val categoryMap = animeResult.relationships.categories?.data?.size
 
                 imageAnimeCover.load(coverImage?.small) {
-                    crossfade(500)
+                    crossfade(800)
                     error(R.drawable.color_gradient)
                 }
                 imageAnimePoster.load(posterImage?.small) {
-                    crossfade(500)
+                    crossfade(800)
                     error(R.drawable.color_gradient)
                 }
                 textAnimeTitle.isSelected = true

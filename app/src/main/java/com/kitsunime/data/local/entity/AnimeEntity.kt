@@ -4,7 +4,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.kitsunime.common.Constants.ANIME_ENTITY
 import com.kitsunime.data.remote.model.Attributes
-import com.kitsunime.data.remote.model.Data
 import com.kitsunime.data.remote.model.Relationships
 
 @Entity(tableName = ANIME_ENTITY)
@@ -14,13 +13,4 @@ data class AnimeEntity(
     var attributes: Attributes,
     var relationships: Relationships,
     var type: String,
-) {
-    fun toAnime(): Data {
-        return Data(
-            attributes = attributes,
-            id = id,
-            relationships = relationships,
-            type = type
-        )
-    }
-}
+)
