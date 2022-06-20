@@ -18,8 +18,8 @@ class AnimeViewModel @Inject constructor(
     private val getAnimeTrendingListUseCase: GetAnimeTrendingListUseCase,
 ) : ViewModel() {
 
-    private val _trendingAnimeUiState = MutableStateFlow(AnimeTrendingUiState())
-    val trendingAnimeUiState: StateFlow<AnimeTrendingUiState> = _trendingAnimeUiState
+    private val _animeTrendingUiState = MutableStateFlow(AnimeTrendingUiState())
+    val animeTrendingUiState: StateFlow<AnimeTrendingUiState> = _animeTrendingUiState
 
     private val _animeUiState = MutableStateFlow(AnimeUiState())
     val animeUiState: StateFlow<AnimeUiState> = _animeUiState
@@ -38,13 +38,13 @@ class AnimeViewModel @Inject constructor(
         getAnimeTrendingListUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
-                    _trendingAnimeUiState.value = AnimeTrendingUiState(isLoading = false, data = result.data ?: emptyList())
+                    _animeTrendingUiState.value = AnimeTrendingUiState(isLoading = false, data = result.data ?: emptyList())
                 }
                 is Resource.Error -> {
-                    _trendingAnimeUiState.value = AnimeTrendingUiState(isLoading = false, data = result.data ?: emptyList(), error = result.message ?: "An unexpected error occurred.")
+                    _animeTrendingUiState.value = AnimeTrendingUiState(isLoading = false, data = result.data ?: emptyList(), error = result.message ?: "An unexpected error occurred.")
                 }
                 is Resource.Loading -> {
-                    _trendingAnimeUiState.value = AnimeTrendingUiState(isLoading = true, data = result.data ?: emptyList())
+                    _animeTrendingUiState.value = AnimeTrendingUiState(isLoading = true, data = result.data ?: emptyList())
                 }
             }
         }.launchIn(viewModelScope)

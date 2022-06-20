@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.kitsunime.R
 import com.kitsunime.common.setVisibilityGone
 import com.kitsunime.common.setVisibilityVisible
@@ -31,6 +33,13 @@ class MangaFragment : Fragment(R.layout.fragment_manga) {
         initRecyclerView()
         observeMangaTrending()
         observeManga()
+        setOnRefresh()
+    }
+
+    private fun setOnRefresh() {
+        binding.mangaRefresh.setOnRefreshListener {
+            mangaVm.refresh()
+        }
     }
 
     private fun initRecyclerView() {
@@ -46,48 +55,62 @@ class MangaFragment : Fragment(R.layout.fragment_manga) {
 
     private fun observeMangaTrending() {
         lifecycleScope.launch {
-            mangaVm.mangaTrendingUiState.collect { uiState ->
-                when {
-                    uiState.isLoading -> {
-                        binding.contShimMangaListTrend.root.setVisibilityVisible()
-                        binding.contMangaListTrend.root.setVisibilityGone()
-                    }
-                    uiState.data.isNotEmpty() -> {
-                        binding.contShimMangaListTrend.root.stopShimmer()
-                        binding.contShimMangaListTrend.root.setVisibilityGone()
-                        binding.contMangaListTrend.root.setVisibilityVisible()
-                        mangaTrendingAdapter.submitData(uiState.data)
-                    }
-                    uiState.error.isNotEmpty() -> {
-                        binding.contShimMangaListTrend.root.stopShimmer()
-                        binding.contShimMangaListTrend.root.setVisibilityGone()
-                        binding.contMangaListTrend.root.setVisibilityGone()
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                mangaVm.mangaTrendingUiState.collect { uiState ->
+                    when {
+                        uiState.isLoading -> {
+                            binding.contShimMangaListTrend.root.setVisibilityVisible()
+                            binding.contMangaListTrend.root.setVisibilityGone()
+                        }
+                        uiState.data.isNotEmpty() -> {
+                            binding.contShimMangaListTrend.root.stopShimmer()
+                            binding.contShimMangaListTrend.root.setVisibilityGone()
+                            binding.contMangaListTrend.root.setVisibilityVisible()
+                            mangaTrendingAdapter.submitData(uiState.data)
+                        }
+                        uiState.error.isNotEmpty() -> {
+                            binding.contShimMangaListTrend.root.stopShimmer()
+                            binding.contShimMangaListTrend.root.setVisibilityGone()
+                            binding.contMangaListTrend.root.setVisibilityGone()
+                        }
                     }
                 }
+            }
+        }
+        lifecycleScope.launch {
+            mangaVm.mangaTrendingUiState.collect {
+                binding.mangaRefresh.isRefreshing = it.isLoading
             }
         }
     }
 
     private fun observeManga() {
         lifecycleScope.launch {
-            mangaVm.mangaUiState.collect { uiState ->
-                when {
-                    uiState.isLoading -> {
-                        binding.contShimMangaList.root.setVisibilityVisible()
-                        binding.contMangaList.root.setVisibilityGone()
-                    }
-                    uiState.data.isNotEmpty() -> {
-                        binding.contShimMangaList.root.stopShimmer()
-                        binding.contShimMangaList.root.setVisibilityGone()
-                        binding.contMangaList.root.setVisibilityVisible()
-                        mangaAdapter.submitData(uiState.data)
-                    }
-                    uiState.error.isNotEmpty() -> {
-                        binding.contShimMangaList.root.stopShimmer()
-                        binding.contShimMangaList.root.setVisibilityGone()
-                        binding.contMangaList.root.setVisibilityGone()
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                mangaVm.mangaUiState.collect { uiState ->
+                    when {
+                        uiState.isLoading -> {
+                            binding.contShimMangaList.root.setVisibilityVisible()
+                            binding.contMangaList.root.setVisibilityGone()
+                        }
+                        uiState.data.isNotEmpty() -> {
+                            binding.contShimMangaList.root.stopShimmer()
+                            binding.contShimMangaList.root.setVisibilityGone()
+                            binding.contMangaList.root.setVisibilityVisible()
+                            mangaAdapter.submitData(uiState.data)
+                        }
+                        uiState.error.isNotEmpty() -> {
+                            binding.contShimMangaList.root.stopShimmer()
+                            binding.contShimMangaList.root.setVisibilityGone()
+                            binding.contMangaList.root.setVisibilityGone()
+                        }
                     }
                 }
+            }
+        }
+        lifecycleScope.launch {
+            mangaVm.mangaUiState.collect {
+                binding.mangaRefresh.isRefreshing = it.isLoading
             }
         }
     }

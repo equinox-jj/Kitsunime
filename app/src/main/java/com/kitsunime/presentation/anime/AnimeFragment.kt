@@ -56,7 +56,7 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
     private fun observeAnimeTrending() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                animeVm.trendingAnimeUiState.collect { uiState ->
+                animeVm.animeTrendingUiState.collect { uiState ->
                     when {
                         uiState.isLoading -> {
                             binding.contShimAnimeListTrend.root.setVisibilityVisible()
@@ -78,7 +78,7 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
             }
         }
         lifecycleScope.launch {
-            animeVm.trendingAnimeUiState.collect {
+            animeVm.animeTrendingUiState.collect {
                 binding.animeRefresh.isRefreshing = it.isLoading
             }
         }

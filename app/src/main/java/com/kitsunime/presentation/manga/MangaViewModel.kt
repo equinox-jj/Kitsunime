@@ -29,6 +29,11 @@ class MangaViewModel @Inject constructor(
         getMangaList()
     }
 
+    fun refresh() {
+        getMangaTrendingList()
+        getMangaList()
+    }
+
     private fun getMangaTrendingList() {
         getMangaTrendingListUseCase().onEach { result ->
             when (result) {
