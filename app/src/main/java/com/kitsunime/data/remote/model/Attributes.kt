@@ -1,20 +1,17 @@
 package com.kitsunime.data.remote.model
 
 
-import com.google.gson.annotations.SerializedName
-
 data class Attributes(
-    @SerializedName("averageRating") val averageRating: String?,
-    @SerializedName("canonicalTitle") val canonicalTitle: String?,
-    @SerializedName("coverImage") val coverImage: CoverImage?,
-    @SerializedName("episodeCount") val episodeCount: Int?,
-    @SerializedName("episodeLength") val episodeLength: Int?,
-    @SerializedName("posterImage") val posterImage: PosterImage?,
-    @SerializedName("startDate") val startDate: String?,
-    @SerializedName("status") val status: String?,
-    @SerializedName("subtype") val subtype: String?,
-    @SerializedName("chapterCount") val chapterCount: Int?,
-    @SerializedName("volumeCount") val volumeCount: Int?,
-    @SerializedName("serialization") val serialization: String?,
-
+     val averageRating: String?,
+     val canonicalTitle: String?,
+     val coverImage: CoverImage?,
+     val episodeCount: Int?,
+     val episodeLength: Int?,
+     val posterImage: PosterImage?,
+     val startDate: String?,
+     val status: String?,
+     val subtype: String?,
+     val chapterCount: Int?,
+     val volumeCount: Int?,
+     val serialization: String?,
     )
