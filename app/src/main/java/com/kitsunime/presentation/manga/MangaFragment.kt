@@ -54,8 +54,8 @@ class MangaFragment : Fragment(R.layout.fragment_manga) {
     }
 
     private fun observeMangaTrending() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 mangaVm.mangaTrendingUiState.collect { uiState ->
                     when {
                         uiState.isLoading -> {
@@ -77,7 +77,7 @@ class MangaFragment : Fragment(R.layout.fragment_manga) {
                 }
             }
         }
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             mangaVm.mangaTrendingUiState.collect {
                 binding.mangaRefresh.isRefreshing = it.isLoading
             }
@@ -85,8 +85,8 @@ class MangaFragment : Fragment(R.layout.fragment_manga) {
     }
 
     private fun observeManga() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 mangaVm.mangaUiState.collect { uiState ->
                     when {
                         uiState.isLoading -> {
@@ -108,7 +108,7 @@ class MangaFragment : Fragment(R.layout.fragment_manga) {
                 }
             }
         }
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             mangaVm.mangaUiState.collect {
                 binding.mangaRefresh.isRefreshing = it.isLoading
             }

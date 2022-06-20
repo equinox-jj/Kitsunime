@@ -1,6 +1,7 @@
 package com.kitsunime.presentation.anime
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -54,8 +55,9 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
     }
 
     private fun observeAnimeTrending() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                Log.d("Lifecycle :", this.toString())
                 animeVm.animeTrendingUiState.collect { uiState ->
                     when {
                         uiState.isLoading -> {
@@ -77,7 +79,7 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
                 }
             }
         }
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             animeVm.animeTrendingUiState.collect {
                 binding.animeRefresh.isRefreshing = it.isLoading
             }
@@ -85,8 +87,8 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
     }
 
     private fun observeAnime() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 animeVm.animeUiState.collect { uiState ->
                     when {
                         uiState.isLoading -> {
@@ -108,7 +110,7 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
                 }
             }
         }
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             animeVm.animeUiState.collect {
                 binding.animeRefresh.isRefreshing = it.isLoading
             }
@@ -118,6 +120,7 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        Log.d("onDestroy :", this.toString())
     }
 
 }
