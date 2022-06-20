@@ -29,6 +29,11 @@ class AnimeViewModel @Inject constructor(
         getAnimeList()
     }
 
+    fun refresh() {
+        getAnimeTrendingList()
+        getAnimeList()
+    }
+
     private fun getAnimeTrendingList() {
         getAnimeTrendingListUseCase().onEach { result ->
             when (result) {

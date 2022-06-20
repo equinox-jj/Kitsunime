@@ -2,10 +2,6 @@ package com.kitsunime.data.repository
 
 import com.kitsunime.common.Resource
 import com.kitsunime.data.local.KitsuDao
-import com.kitsunime.data.local.entity.AnimeEntity
-import com.kitsunime.data.local.entity.AnimeTrendingEntity
-import com.kitsunime.data.local.entity.MangaEntity
-import com.kitsunime.data.local.entity.MangaTrendingEntity
 import com.kitsunime.data.mapping.*
 import com.kitsunime.data.remote.KitsuService
 import com.kitsunime.data.remote.model.KitsuResults
@@ -100,55 +96,6 @@ class Repository @Inject constructor(
 
         val newKitsuDao = dao.getMangaDao().map { it.toManga() }
         emit(Resource.Success(newKitsuDao))
-    }
-
-    // Local Repository
-    override suspend fun insertAnimeTrendingDao(animeTrendingEntity: List<AnimeTrendingEntity>) {
-        return dao.insertAnimeTrendingDao(animeTrendingEntity)
-    }
-
-    override suspend fun getAnimeTrendingDao(): List<AnimeTrendingEntity> {
-        return dao.getAnimeTrendingDao()
-    }
-
-    override suspend fun deleteAnimeTrendingIdsDao(ids: List<String>) {
-        return dao.deleteAnimeTrendingIdsDao(ids)
-    }
-
-    override suspend fun insertAnimeDao(animeEntity: List<AnimeEntity>) {
-        return dao.insertAnimeDao(animeEntity)
-    }
-
-    override suspend fun getAnimeDao(): List<AnimeEntity> {
-        return dao.getAnimeDao()
-    }
-
-    override suspend fun deleteAnimeIdsDao(ids: List<String>) {
-        return dao.deleteAnimeIdsDao(ids)
-    }
-
-    override suspend fun insertMangaTrendingDao(mangaTrendingEntity: List<MangaTrendingEntity>) {
-        return dao.insertMangaTrendingDao(mangaTrendingEntity)
-    }
-
-    override suspend fun getMangaTrendingDao(): List<MangaTrendingEntity> {
-        return dao.getMangaTrendingDao()
-    }
-
-    override suspend fun deleteMangaTrendingIdsDao(ids: List<String>) {
-        return dao.deleteMangaTrendingIdsDao(ids)
-    }
-
-    override suspend fun insertMangaDao(mangaEntity: List<MangaEntity>) {
-        return dao.insertMangaDao(mangaEntity)
-    }
-
-    override suspend fun getMangaDao(): List<MangaEntity> {
-        return dao.getMangaDao()
-    }
-
-    override suspend fun deleteMangaIdsDao(ids: List<String>) {
-        return dao.deleteMangaIdsDao(ids)
     }
 
 }

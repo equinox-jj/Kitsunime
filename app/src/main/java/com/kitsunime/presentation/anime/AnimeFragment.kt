@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.kitsunime.R
 import com.kitsunime.common.setVisibilityGone
 import com.kitsunime.common.setVisibilityVisible
@@ -31,6 +33,13 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
         initRecyclerView()
         observeAnimeTrending()
         observeAnime()
+        setOnRefresh()
+    }
+
+    private fun setOnRefresh() {
+        binding.animeRefresh.setOnRefreshListener {
+            animeVm.refresh()
+        }
     }
 
     private fun initRecyclerView() {
@@ -46,48 +55,62 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
 
     private fun observeAnimeTrending() {
         lifecycleScope.launch {
-            animeVm.trendingAnimeUiState.collect { uiState ->
-                when {
-                    uiState.isLoading -> {
-                        binding.contShimAnimeListTrend.root.setVisibilityVisible()
-                        binding.contAnimeListTrend.root.setVisibilityGone()
-                    }
-                    uiState.data.isNotEmpty() -> {
-                        binding.contShimAnimeListTrend.root.stopShimmer()
-                        binding.contShimAnimeListTrend.root.setVisibilityGone()
-                        binding.contAnimeListTrend.root.setVisibilityVisible()
-                        animeTrendingAdapter.submitData(uiState.data)
-                    }
-                    uiState.error.isNotEmpty() -> {
-                        binding.contShimAnimeListTrend.root.stopShimmer()
-                        binding.contShimAnimeListTrend.root.setVisibilityGone()
-                        binding.contAnimeListTrend.root.setVisibilityGone()
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                animeVm.trendingAnimeUiState.collect { uiState ->
+                    when {
+                        uiState.isLoading -> {
+                            binding.contShimAnimeListTrend.root.setVisibilityVisible()
+                            binding.contAnimeListTrend.root.setVisibilityGone()
+                        }
+                        uiState.data.isNotEmpty() -> {
+                            binding.contShimAnimeListTrend.root.stopShimmer()
+                            binding.contShimAnimeListTrend.root.setVisibilityGone()
+                            binding.contAnimeListTrend.root.setVisibilityVisible()
+                            animeTrendingAdapter.submitData(uiState.data)
+                        }
+                        uiState.error.isNotEmpty() -> {
+                            binding.contShimAnimeListTrend.root.stopShimmer()
+                            binding.contShimAnimeListTrend.root.setVisibilityGone()
+                            binding.contAnimeListTrend.root.setVisibilityGone()
+                        }
                     }
                 }
+            }
+        }
+        lifecycleScope.launch {
+            animeVm.trendingAnimeUiState.collect {
+                binding.animeRefresh.isRefreshing = it.isLoading
             }
         }
     }
 
     private fun observeAnime() {
         lifecycleScope.launch {
-            animeVm.animeUiState.collect { uiState ->
-                when {
-                    uiState.isLoading -> {
-                        binding.contShimAnimeList.root.setVisibilityVisible()
-                        binding.contAnimeList.root.setVisibilityGone()
-                    }
-                    uiState.data.isNotEmpty() -> {
-                        binding.contShimAnimeList.root.stopShimmer()
-                        binding.contShimAnimeList.root.setVisibilityGone()
-                        binding.contAnimeList.root.setVisibilityVisible()
-                        animeAdapter.submitData(uiState.data)
-                    }
-                    uiState.error.isNotEmpty() -> {
-                        binding.contShimAnimeList.root.stopShimmer()
-                        binding.contShimAnimeList.root.setVisibilityGone()
-                        binding.contAnimeList.root.setVisibilityGone()
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                animeVm.animeUiState.collect { uiState ->
+                    when {
+                        uiState.isLoading -> {
+                            binding.contShimAnimeList.root.setVisibilityVisible()
+                            binding.contAnimeList.root.setVisibilityGone()
+                        }
+                        uiState.data.isNotEmpty() -> {
+                            binding.contShimAnimeList.root.stopShimmer()
+                            binding.contShimAnimeList.root.setVisibilityGone()
+                            binding.contAnimeList.root.setVisibilityVisible()
+                            animeAdapter.submitData(uiState.data)
+                        }
+                        uiState.error.isNotEmpty() -> {
+                            binding.contShimAnimeList.root.stopShimmer()
+                            binding.contShimAnimeList.root.setVisibilityGone()
+                            binding.contAnimeList.root.setVisibilityGone()
+                        }
                     }
                 }
+            }
+        }
+        lifecycleScope.launch {
+            animeVm.animeUiState.collect {
+                binding.animeRefresh.isRefreshing = it.isLoading
             }
         }
     }
