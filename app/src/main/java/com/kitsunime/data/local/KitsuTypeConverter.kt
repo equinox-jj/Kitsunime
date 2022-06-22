@@ -3,8 +3,8 @@ package com.kitsunime.data.local
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.kitsunime.data.remote.model.Attributes
-import com.kitsunime.data.remote.model.Relationships
+import com.kitsunime.data.remote.dto.Attributes
+import com.kitsunime.data.remote.dto.Relationships
 
 class KitsuTypeConverter {
 

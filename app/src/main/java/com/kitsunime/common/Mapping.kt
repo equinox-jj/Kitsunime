@@ -1,10 +1,10 @@
-package com.kitsunime.data.mapping
+package com.kitsunime.common
 
 import com.kitsunime.data.local.entity.AnimeEntity
 import com.kitsunime.data.local.entity.AnimeTrendingEntity
 import com.kitsunime.data.local.entity.MangaEntity
 import com.kitsunime.data.local.entity.MangaTrendingEntity
-import com.kitsunime.data.remote.model.KitsuResults
+import com.kitsunime.data.remote.dto.KitsuResults
 
 fun KitsuResults.toAnimeTrendingEntity(): AnimeTrendingEntity {
     return AnimeTrendingEntity(

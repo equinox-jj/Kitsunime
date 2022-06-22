@@ -1,6 +1,6 @@
 package com.kitsunime.presentation.manga
 
-import com.kitsunime.data.remote.model.KitsuResults
+import com.kitsunime.data.remote.dto.KitsuResults
 
 data class MangaUiState(
     val isLoading: Boolean = false,

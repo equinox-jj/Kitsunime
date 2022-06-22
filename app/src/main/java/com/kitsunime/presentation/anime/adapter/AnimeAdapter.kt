@@ -4,44 +4,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
-import com.kitsunime.R
 import com.kitsunime.common.DiffUtils
-import com.kitsunime.data.remote.model.KitsuResults
+import com.kitsunime.data.remote.dto.KitsuResults
 import com.kitsunime.databinding.ItemAnimeListBinding
 
 class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeListVH>() {
 
     private var animeResult = listOf<KitsuResults>()
 
-    inner class AnimeListVH(private val binding: ItemAnimeListBinding) :
+    class AnimeListVH(private val binding: ItemAnimeListBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(animeResult: KitsuResults) {
-            binding.apply {
-                val coverImage = animeResult.attributes.coverImage
-                val posterImage = animeResult.attributes.posterImage
-                val releaseDate = animeResult.attributes.startDate
-                val duration = animeResult.attributes.episodeLength
-                val totalEp = animeResult.attributes.episodeCount
-                val categoryMap = animeResult.relationships.categories?.data?.size
-
-                imageAnimeCover.load(coverImage?.small) {
-                    crossfade(800)
-                    error(R.drawable.color_gradient)
-                }
-                imageAnimePoster.load(posterImage?.small) {
-                    crossfade(800)
-                    error(R.drawable.color_gradient)
-                }
-                textAnimeTitle.isSelected = true
-                textAnimeTitle.text = animeResult.attributes.canonicalTitle
-                textAnimeCategory.text = "Category : $categoryMap"
-                textAnimeReleaseDate.text = if (releaseDate != null) "Release Date : $releaseDate" else "Release Unknown"
-                textAnimeDuration.text = if (duration != null) "Duration : $duration Minutes" else "Duration Unknown"
-                textAnimeTotalEp.text = if (totalEp != null) "Total Episode : $totalEp Episodes" else "Total EP Unknown"
-                textAnimeType.text = animeResult.attributes.subtype?.replaceFirstChar { it.uppercase() }
-                textAnimeStatus.text = animeResult.attributes.status?.replaceFirstChar { it.uppercase() }
-            }
+            binding.animeType = animeResult
+            binding.executePendingBindings()
         }
     }
 

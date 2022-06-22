@@ -1,7 +1,7 @@
 package com.kitsunime.domain.repository
 
 import com.kitsunime.common.Resource
-import com.kitsunime.data.remote.model.KitsuResults
+import com.kitsunime.data.remote.dto.KitsuResults
 import kotlinx.coroutines.flow.Flow
 
 interface IRepository {

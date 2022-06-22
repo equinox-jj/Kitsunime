@@ -1,10 +1,9 @@
 package com.kitsunime.data.repository
 
-import com.kitsunime.common.Resource
+import com.kitsunime.common.*
 import com.kitsunime.data.local.KitsuDao
-import com.kitsunime.data.mapping.*
 import com.kitsunime.data.remote.KitsuService
-import com.kitsunime.data.remote.model.KitsuResults
+import com.kitsunime.data.remote.dto.KitsuResults
 import com.kitsunime.domain.repository.IRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
