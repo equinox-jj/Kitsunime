@@ -4,7 +4,7 @@ import com.kitsunime.common.Constants.ANIME
 import com.kitsunime.common.Constants.ANIME_TRENDING
 import com.kitsunime.common.Constants.MANGA
 import com.kitsunime.common.Constants.MANGA_TRENDING
-import com.kitsunime.data.remote.model.KitsuResponse
+import com.kitsunime.data.remote.dto.KitsuResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

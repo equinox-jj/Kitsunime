@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.kitsunime.R
 import com.kitsunime.common.DiffUtils
-import com.kitsunime.data.remote.model.KitsuResults
+import com.kitsunime.data.remote.dto.KitsuResults
 import com.kitsunime.databinding.ItemAnimeTrendingListBinding
 
 class AnimeTrendingAdapter : RecyclerView.Adapter<AnimeTrendingAdapter.AnimeTrendingVH>() {
@@ -22,7 +22,7 @@ class AnimeTrendingAdapter : RecyclerView.Adapter<AnimeTrendingAdapter.AnimeTren
                 val totalEp = animeResult.attributes.episodeCount
 
                 imageAnimePoster.load(posterImage?.small) {
-                    crossfade(800)
+                    crossfade(1000)
                     error(R.drawable.color_gradient)
                 }
                 textAnimeTitle.isSelected = true

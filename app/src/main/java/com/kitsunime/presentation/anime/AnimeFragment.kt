@@ -76,14 +76,15 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
                             binding.contAnimeListTrend.root.setVisibilityGone()
                         }
                     }
+                    binding.animeRefresh.isRefreshing = uiState.isLoading
                 }
             }
         }
-        viewLifecycleOwner.lifecycleScope.launch {
-            animeVm.animeTrendingUiState.collect {
-                binding.animeRefresh.isRefreshing = it.isLoading
-            }
-        }
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            animeVm.animeTrendingUiState.collect {
+//                binding.animeRefresh.isRefreshing = it.isLoading
+//            }
+//        }
     }
 
     private fun observeAnime() {
@@ -107,14 +108,15 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
                             binding.contAnimeList.root.setVisibilityGone()
                         }
                     }
+                    binding.animeRefresh.isRefreshing = uiState.isLoading
                 }
             }
         }
-        viewLifecycleOwner.lifecycleScope.launch {
-            animeVm.animeUiState.collect {
-                binding.animeRefresh.isRefreshing = it.isLoading
-            }
-        }
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            animeVm.animeUiState.collect {
+//                binding.animeRefresh.isRefreshing = it.isLoading
+//            }
+//        }
     }
 
     override fun onDestroyView() {

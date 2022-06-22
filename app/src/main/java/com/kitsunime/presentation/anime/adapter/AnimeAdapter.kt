@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.kitsunime.R
 import com.kitsunime.common.DiffUtils
-import com.kitsunime.data.remote.model.KitsuResults
+import com.kitsunime.data.remote.dto.KitsuResults
 import com.kitsunime.databinding.ItemAnimeListBinding
 
 class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeListVH>() {
@@ -26,19 +26,19 @@ class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeListVH>() {
                 val categoryMap = animeResult.relationships.categories?.data?.size
 
                 imageAnimeCover.load(coverImage?.small) {
-                    crossfade(800)
+                    crossfade(1000)
                     error(R.drawable.color_gradient)
                 }
                 imageAnimePoster.load(posterImage?.small) {
-                    crossfade(800)
+                    crossfade(1000)
                     error(R.drawable.color_gradient)
                 }
                 textAnimeTitle.isSelected = true
                 textAnimeTitle.text = animeResult.attributes.canonicalTitle
                 textAnimeCategory.text = "Category : $categoryMap"
-                textAnimeReleaseDate.text = if (releaseDate != null) "Release Date : $releaseDate" else "Release Unknown"
-                textAnimeDuration.text = if (duration != null) "Duration : $duration Minutes" else "Duration Unknown"
-                textAnimeTotalEp.text = if (totalEp != null) "Total Episode : $totalEp Episodes" else "Total EP Unknown"
+                textAnimeReleaseDate.text = if (releaseDate != null) "Release Date : $releaseDate" else "Release : Unknown"
+                textAnimeDuration.text = if (duration != null) "Duration : $duration Minutes" else "Duration : Unknown"
+                textAnimeTotalEp.text = if (totalEp != null) "Episode : $totalEp Episodes" else "Episodes : Unknown"
                 textAnimeType.text = animeResult.attributes.subtype?.replaceFirstChar { it.uppercase() }
                 textAnimeStatus.text = animeResult.attributes.status?.replaceFirstChar { it.uppercase() }
             }

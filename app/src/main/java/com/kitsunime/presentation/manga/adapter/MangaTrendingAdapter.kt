@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.kitsunime.R
 import com.kitsunime.common.DiffUtils
-import com.kitsunime.data.remote.model.KitsuResults
+import com.kitsunime.data.remote.dto.KitsuResults
 import com.kitsunime.databinding.ItemAnimeTrendingListBinding
 
 class MangaTrendingAdapter : RecyclerView.Adapter<MangaTrendingAdapter.MangaTrendingVH>() {
@@ -22,12 +22,12 @@ class MangaTrendingAdapter : RecyclerView.Adapter<MangaTrendingAdapter.MangaTren
                 val chapter = mangaResult.attributes.chapterCount
 
                 imageAnimePoster.load(posterImage?.small) {
-                    crossfade(800)
+                    crossfade(1000)
                     error(R.drawable.color_gradient)
                 }
                 textAnimeTitle.isSelected = true
                 textAnimeTitle.text = mangaResult.attributes.canonicalTitle
-                textAnimeTotalEp.text = if (chapter != null) "$chapter Chapters" else "Chapter Unknown"
+                textAnimeTotalEp.text = if (chapter != null) "$chapter Chapters" else "Unknown"
                 textAnimeType.text = mangaResult.attributes.subtype?.replaceFirstChar { it.uppercase() }
             }
         }

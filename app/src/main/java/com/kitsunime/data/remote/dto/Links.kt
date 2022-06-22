@@ -1,4 +1,4 @@
-package com.kitsunime.data.remote.model
+package com.kitsunime.data.remote.dto
 
 
 data class Links(
