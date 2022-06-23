@@ -74,12 +74,8 @@ class MangaFragment : Fragment(R.layout.fragment_manga) {
                             binding.contMangaListTrend.root.setVisibilityGone()
                         }
                     }
+                    binding.mangaRefresh.isRefreshing = uiState.isLoading
                 }
-            }
-        }
-        viewLifecycleOwner.lifecycleScope.launch {
-            mangaVm.mangaTrendingUiState.collect {
-                binding.mangaRefresh.isRefreshing = it.isLoading
             }
         }
     }
@@ -105,12 +101,8 @@ class MangaFragment : Fragment(R.layout.fragment_manga) {
                             binding.contMangaList.root.setVisibilityGone()
                         }
                     }
+                    binding.mangaRefresh.isRefreshing = uiState.isLoading
                 }
-            }
-        }
-        viewLifecycleOwner.lifecycleScope.launch {
-            mangaVm.mangaUiState.collect {
-                binding.mangaRefresh.isRefreshing = it.isLoading
             }
         }
     }
