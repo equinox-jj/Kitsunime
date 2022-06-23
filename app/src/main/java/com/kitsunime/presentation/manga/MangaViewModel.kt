@@ -3,8 +3,7 @@ package com.kitsunime.presentation.manga
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kitsunime.common.Resource
-import com.kitsunime.domain.use_case.GetMangaListUseCase
-import com.kitsunime.domain.use_case.GetMangaTrendingListUseCase
+import com.kitsunime.domain.use_case.UseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,8 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MangaViewModel @Inject constructor(
-    private val getMangaTrendingListUseCase: GetMangaTrendingListUseCase,
-    private val getMangaListUseCase: GetMangaListUseCase,
+    private val useCases: UseCases
 ) : ViewModel() {
 
     private val _mangaTrendingUiState = MutableStateFlow(MangaTrendingUiState())
@@ -35,7 +33,7 @@ class MangaViewModel @Inject constructor(
     }
 
     private fun getMangaTrendingList() {
-        getMangaTrendingListUseCase().onEach { result ->
+        useCases.getMangaTrendingListUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
                     _mangaTrendingUiState.value = MangaTrendingUiState(isLoading = false, data = result.data ?: emptyList())
@@ -51,7 +49,7 @@ class MangaViewModel @Inject constructor(
     }
 
     private fun getMangaList() {
-        getMangaListUseCase().onEach { result ->
+        useCases.getMangaListUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
                     _mangaUiState.value = MangaUiState(isLoading = false, data = result.data ?: emptyList())

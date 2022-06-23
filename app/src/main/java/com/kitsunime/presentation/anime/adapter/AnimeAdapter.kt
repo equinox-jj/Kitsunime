@@ -8,13 +8,13 @@ import coil.load
 import com.kitsunime.R
 import com.kitsunime.common.DiffUtils
 import com.kitsunime.data.remote.dto.KitsuResults
-import com.kitsunime.databinding.ItemAnimeListBinding
+import com.kitsunime.databinding.ItemVerticalBinding
 
 class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeListVH>() {
 
     private var animeResult = listOf<KitsuResults>()
 
-    inner class AnimeListVH(private val binding: ItemAnimeListBinding) :
+    inner class AnimeListVH(private val binding: ItemVerticalBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(animeResult: KitsuResults) {
             binding.apply {
@@ -46,7 +46,7 @@ class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeListVH>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimeListVH {
-        val binding = ItemAnimeListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemVerticalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return AnimeListVH(binding)
     }
 

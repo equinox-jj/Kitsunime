@@ -3,8 +3,7 @@ package com.kitsunime.presentation.anime
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kitsunime.common.Resource
-import com.kitsunime.domain.use_case.GetAnimeListUseCase
-import com.kitsunime.domain.use_case.GetAnimeTrendingListUseCase
+import com.kitsunime.domain.use_case.UseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,8 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AnimeViewModel @Inject constructor(
-    private val getAnimeListUseCase: GetAnimeListUseCase,
-    private val getAnimeTrendingListUseCase: GetAnimeTrendingListUseCase,
+    private val useCases: UseCases
 ) : ViewModel() {
 
     private val _animeTrendingUiState = MutableStateFlow(AnimeTrendingUiState())
@@ -35,7 +33,7 @@ class AnimeViewModel @Inject constructor(
     }
 
     private fun getAnimeTrendingList() {
-        getAnimeTrendingListUseCase().onEach { result ->
+        useCases.getAnimeTrendingListUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
                     _animeTrendingUiState.value = AnimeTrendingUiState(isLoading = false, data = result.data ?: emptyList())
@@ -51,7 +49,7 @@ class AnimeViewModel @Inject constructor(
     }
 
     private fun getAnimeList() {
-        getAnimeListUseCase().onEach { result ->
+        useCases.getAnimeListUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
                     _animeUiState.value = AnimeUiState(isLoading = false, data = result.data ?: emptyList())
