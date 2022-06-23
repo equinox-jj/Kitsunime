@@ -29,6 +29,8 @@ class MangaFragment : Fragment(R.layout.fragment_manga) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMangaBinding.bind(view)
+        binding.mangaVm = mangaVm
+        binding.lifecycleOwner = viewLifecycleOwner
 
         initRecyclerView()
         observeMangaTrending()

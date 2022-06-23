@@ -1,4 +1,4 @@
-package com.kitsunime.data.mapping
+package com.kitsunime.common
 
 import com.kitsunime.data.local.entity.AnimeEntity
 import com.kitsunime.data.local.entity.AnimeTrendingEntity
