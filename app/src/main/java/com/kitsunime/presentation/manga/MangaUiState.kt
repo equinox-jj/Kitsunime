@@ -1,9 +1,9 @@
 package com.kitsunime.presentation.manga
 
-import com.kitsunime.data.remote.dto.KitsuResults
+import com.kitsunime.domain.model.KitsuResult
 
 data class MangaUiState(
     val isLoading: Boolean = false,
-    val data: List<KitsuResults> = emptyList(),
+    val data: List<KitsuResult> = emptyList(),
     val error: String = "",
 )

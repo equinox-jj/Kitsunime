@@ -7,28 +7,28 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.kitsunime.R
 import com.kitsunime.common.DiffUtils
-import com.kitsunime.data.remote.dto.KitsuResults
 import com.kitsunime.databinding.ItemHorizontalBinding
+import com.kitsunime.domain.model.KitsuResult
 
 class MangaTrendingAdapter : RecyclerView.Adapter<MangaTrendingAdapter.MangaTrendingVH>() {
 
-    private var mangaResult = listOf<KitsuResults>()
+    private var mangaResult = listOf<KitsuResult>()
 
     inner class MangaTrendingVH(private val binding: ItemHorizontalBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(mangaResult: KitsuResults) {
+        fun bind(mangaResult: KitsuResult) {
             binding.apply {
-                val posterImage = mangaResult.attributes.posterImage
-                val chapter = mangaResult.attributes.chapterCount
+                val posterImage = mangaResult.attributes?.posterImage
+                val chapter = mangaResult.attributes?.chapterCount
 
                 imageAnimePoster.load(posterImage?.small) {
                     crossfade(1000)
                     error(R.drawable.color_gradient)
                 }
                 textAnimeTitle.isSelected = true
-                textAnimeTitle.text = mangaResult.attributes.canonicalTitle
+                textAnimeTitle.text = mangaResult.attributes?.canonicalTitle
                 textAnimeTotalEp.text = if (chapter != null) "$chapter Chapters" else "Unknown"
-                textAnimeType.text = mangaResult.attributes.subtype?.replaceFirstChar { it.uppercase() }
+                textAnimeType.text = mangaResult.attributes?.subtype?.replaceFirstChar { it.uppercase() }
             }
         }
     }
@@ -44,7 +44,7 @@ class MangaTrendingAdapter : RecyclerView.Adapter<MangaTrendingAdapter.MangaTren
 
     override fun getItemCount(): Int = mangaResult.size
 
-    fun submitData(newData: List<KitsuResults>) {
+    fun submitData(newData: List<KitsuResult>) {
         val mangaDiffUtil = DiffUtils(mangaResult, newData)
         val diffUtil = DiffUtil.calculateDiff(mangaDiffUtil)
         mangaResult = newData

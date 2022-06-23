@@ -7,23 +7,23 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.kitsunime.R
 import com.kitsunime.common.DiffUtils
-import com.kitsunime.data.remote.dto.KitsuResults
 import com.kitsunime.databinding.ItemVerticalBinding
+import com.kitsunime.domain.model.KitsuResult
 
 class MangaAdapter : RecyclerView.Adapter<MangaAdapter.MangaViewHolder>() {
 
-    private var mangaResult = listOf<KitsuResults>()
+    private var mangaResult = listOf<KitsuResult>()
 
     inner class MangaViewHolder(private val binding: ItemVerticalBinding) :
         RecyclerView.ViewHolder(binding.root) {
-            fun bind(mangaResult: KitsuResults) {
+            fun bind(mangaResult: KitsuResult) {
                 binding.apply {
-                    val coverImage = mangaResult.attributes.coverImage
-                    val posterImage = mangaResult.attributes.posterImage
-                    val releaseDate = mangaResult.attributes.startDate
-                    val chapter = mangaResult.attributes.chapterCount
-                    val volume = mangaResult.attributes.volumeCount
-                    val categoryMap = mangaResult.relationships.categories?.data?.size
+                    val coverImage = mangaResult.attributes?.coverImage
+                    val posterImage = mangaResult.attributes?.posterImage
+                    val releaseDate = mangaResult.attributes?.startDate
+                    val chapter = mangaResult.attributes?.chapterCount
+                    val volume = mangaResult.attributes?.volumeCount
+                    val categoryMap = mangaResult.relationships?.categories?.data?.size
 
                     imageAnimeCover.load(coverImage?.small) {
                         crossfade(1000)
@@ -34,13 +34,13 @@ class MangaAdapter : RecyclerView.Adapter<MangaAdapter.MangaViewHolder>() {
                         error(R.drawable.color_gradient)
                     }
                     textAnimeTitle.isSelected = true
-                    textAnimeTitle.text = mangaResult.attributes.canonicalTitle
+                    textAnimeTitle.text = mangaResult.attributes?.canonicalTitle
                     textAnimeCategory.text = "Category : $categoryMap"
                     textAnimeReleaseDate.text = if (releaseDate != null) "Release Date : $releaseDate" else "Release Date : Unknown"
                     textAnimeDuration.text = if (chapter != null) "Chapters : $chapter Chapters" else "Chapter : Unknown"
                     textAnimeTotalEp.text = if (volume != null) "Volume : $volume" else "Volume : Unknown"
-                    textAnimeType.text = mangaResult.attributes.subtype?.replaceFirstChar { it.uppercase() }
-                    textAnimeStatus.text = mangaResult.attributes.status?.replaceFirstChar { it.uppercase() }
+                    textAnimeType.text = mangaResult.attributes?.subtype?.replaceFirstChar { it.uppercase() }
+                    textAnimeStatus.text = mangaResult.attributes?.status?.replaceFirstChar { it.uppercase() }
                 }
             }
     }
@@ -56,7 +56,7 @@ class MangaAdapter : RecyclerView.Adapter<MangaAdapter.MangaViewHolder>() {
 
     override fun getItemCount(): Int = mangaResult.size
 
-    fun submitData(newData: List<KitsuResults>) {
+    fun submitData(newData: List<KitsuResult>) {
         val mangaDiffUtil = DiffUtils(mangaResult, newData)
         val diffUtil = DiffUtil.calculateDiff(mangaDiffUtil)
         mangaResult = newData

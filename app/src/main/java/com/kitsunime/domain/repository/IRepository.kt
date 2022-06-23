@@ -1,15 +1,15 @@
 package com.kitsunime.domain.repository
 
 import com.kitsunime.common.Resource
-import com.kitsunime.data.remote.dto.KitsuResults
+import com.kitsunime.domain.model.KitsuResult
 import kotlinx.coroutines.flow.Flow
 
 interface IRepository {
 
-    fun getAnimeTrendingList(): Flow<Resource<List<KitsuResults>>>
-    fun getAnimeList(): Flow<Resource<List<KitsuResults>>>
+    fun getAnimeTrendingList(): Flow<Resource<List<KitsuResult>>>
+    fun getAnimeList(): Flow<Resource<List<KitsuResult>>>
 
-    fun getMangaTrendingList(): Flow<Resource<List<KitsuResults>>>
-    fun getMangaList(): Flow<Resource<List<KitsuResults>>>
+    fun getMangaTrendingList(): Flow<Resource<List<KitsuResult>>>
+    fun getMangaList(): Flow<Resource<List<KitsuResult>>>
 
 }

@@ -1,9 +1,9 @@
 package com.kitsunime.data.repository
 
-import com.kitsunime.common.*
+import com.kitsunime.common.Resource
 import com.kitsunime.data.local.dao.KitsuDao
 import com.kitsunime.data.remote.KitsuService
-import com.kitsunime.data.remote.dto.KitsuResults
+import com.kitsunime.domain.model.KitsuResult
 import com.kitsunime.domain.repository.IRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -17,10 +17,10 @@ class Repository @Inject constructor(
 ) : IRepository {
 
     // Remote Repository
-    override fun getAnimeTrendingList(): Flow<Resource<List<KitsuResults>>> = flow {
+    override fun getAnimeTrendingList(): Flow<Resource<List<KitsuResult>>> = flow {
         emit(Resource.Loading())
 
-        val kitsuDao = dao.getAnimeTrendingDao().map { it.toAnimeTrending() }
+        val kitsuDao = dao.getAnimeTrendingDao().map { it.toKitsuResult() }
         emit(Resource.Loading(data = kitsuDao))
 
         try {
@@ -33,14 +33,14 @@ class Repository @Inject constructor(
             emit(Resource.Error(message = e.localizedMessage ?: "No Internet Connection.", data = kitsuDao))
         }
 
-        val newKitsuDao = dao.getAnimeTrendingDao().map { it.toAnimeTrending() }
+        val newKitsuDao = dao.getAnimeTrendingDao().map { it.toKitsuResult() }
         emit(Resource.Success(newKitsuDao))
     }
 
-    override fun getAnimeList(): Flow<Resource<List<KitsuResults>>> = flow {
+    override fun getAnimeList(): Flow<Resource<List<KitsuResult>>> = flow {
         emit(Resource.Loading())
 
-        val kitsuDao = dao.getAnimeDao().map { it.toAnime() }
+        val kitsuDao = dao.getAnimeDao().map { it.toKitsuResult() }
         emit(Resource.Loading(data = kitsuDao))
 
         try {
@@ -53,14 +53,14 @@ class Repository @Inject constructor(
             emit(Resource.Error(message = e.localizedMessage ?: "No Internet Connection", data = kitsuDao))
         }
 
-        val newKitsuDao = dao.getAnimeDao().map { it.toAnime() }
+        val newKitsuDao = dao.getAnimeDao().map { it.toKitsuResult() }
         emit(Resource.Success(newKitsuDao))
     }
 
-    override fun getMangaTrendingList(): Flow<Resource<List<KitsuResults>>> = flow {
+    override fun getMangaTrendingList(): Flow<Resource<List<KitsuResult>>> = flow {
         emit(Resource.Loading())
 
-        val kitsuDao = dao.getMangaTrendingDao().map { it.toMangaTrending() }
+        val kitsuDao = dao.getMangaTrendingDao().map { it.toKitsuResult() }
         emit(Resource.Loading(data = kitsuDao))
 
         try {
@@ -73,14 +73,14 @@ class Repository @Inject constructor(
             emit(Resource.Error(message = e.localizedMessage ?: "No Internet Connection", data = kitsuDao))
         }
 
-        val newKitsuDao = dao.getMangaTrendingDao().map { it.toMangaTrending() }
+        val newKitsuDao = dao.getMangaTrendingDao().map { it.toKitsuResult() }
         emit(Resource.Success(newKitsuDao))
     }
 
-    override fun getMangaList(): Flow<Resource<List<KitsuResults>>> = flow {
+    override fun getMangaList(): Flow<Resource<List<KitsuResult>>> = flow {
         emit(Resource.Loading())
 
-        val kitsuDao = dao.getMangaDao().map { it.toManga() }
+        val kitsuDao = dao.getMangaDao().map { it.toKitsuResult() }
         emit(Resource.Loading(data = kitsuDao))
 
         try {
@@ -93,7 +93,7 @@ class Repository @Inject constructor(
             emit(Resource.Error(message = e.localizedMessage ?: "No Internet Connection", data = kitsuDao))
         }
 
-        val newKitsuDao = dao.getMangaDao().map { it.toManga() }
+        val newKitsuDao = dao.getMangaDao().map { it.toKitsuResult() }
         emit(Resource.Success(newKitsuDao))
     }
 

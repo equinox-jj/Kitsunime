@@ -7,23 +7,23 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.kitsunime.R
 import com.kitsunime.common.DiffUtils
-import com.kitsunime.data.remote.dto.KitsuResults
 import com.kitsunime.databinding.ItemVerticalBinding
+import com.kitsunime.domain.model.KitsuResult
 
 class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeListVH>() {
 
-    private var animeResult = listOf<KitsuResults>()
+    private var animeResult = listOf<KitsuResult>()
 
     inner class AnimeListVH(private val binding: ItemVerticalBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(animeResult: KitsuResults) {
+        fun bind(animeResult: KitsuResult) {
             binding.apply {
-                val coverImage = animeResult.attributes.coverImage
-                val posterImage = animeResult.attributes.posterImage
-                val releaseDate = animeResult.attributes.startDate
-                val duration = animeResult.attributes.episodeLength
-                val totalEp = animeResult.attributes.episodeCount
-                val categoryMap = animeResult.relationships.categories?.data?.size
+                val coverImage = animeResult.attributes?.coverImage
+                val posterImage = animeResult.attributes?.posterImage
+                val releaseDate = animeResult.attributes?.startDate
+                val duration = animeResult.attributes?.episodeLength
+                val totalEp = animeResult.attributes?.episodeCount
+                val categoryMap = animeResult.relationships?.categories?.data?.size
 
                 imageAnimeCover.load(coverImage?.small) {
                     crossfade(1000)
@@ -34,13 +34,13 @@ class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeListVH>() {
                     error(R.drawable.color_gradient)
                 }
                 textAnimeTitle.isSelected = true
-                textAnimeTitle.text = animeResult.attributes.canonicalTitle
+                textAnimeTitle.text = animeResult.attributes?.canonicalTitle
                 textAnimeCategory.text = "Category : $categoryMap"
                 textAnimeReleaseDate.text = if (releaseDate != null) "Release Date : $releaseDate" else "Release : Unknown"
                 textAnimeDuration.text = if (duration != null) "Duration : $duration Minutes" else "Duration : Unknown"
                 textAnimeTotalEp.text = if (totalEp != null) "Episode : $totalEp Episodes" else "Episodes : Unknown"
-                textAnimeType.text = animeResult.attributes.subtype?.replaceFirstChar { it.uppercase() }
-                textAnimeStatus.text = animeResult.attributes.status?.replaceFirstChar { it.uppercase() }
+                textAnimeType.text = animeResult.attributes?.subtype?.replaceFirstChar { it.uppercase() }
+                textAnimeStatus.text = animeResult.attributes?.status?.replaceFirstChar { it.uppercase() }
             }
         }
     }
@@ -56,7 +56,7 @@ class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeListVH>() {
 
     override fun getItemCount(): Int = animeResult.size
 
-    fun submitData(newData: List<KitsuResults>) {
+    fun submitData(newData: List<KitsuResult>) {
         val animeDiffUtil = DiffUtils(animeResult, newData)
         val diffUtil = DiffUtil.calculateDiff(animeDiffUtil)
         animeResult = newData
