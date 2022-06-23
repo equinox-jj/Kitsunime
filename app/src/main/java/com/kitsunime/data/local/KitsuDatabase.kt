@@ -3,6 +3,7 @@ package com.kitsunime.data.local
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.kitsunime.data.local.dao.KitsuDao
 import com.kitsunime.data.local.entity.AnimeEntity
 import com.kitsunime.data.local.entity.AnimeTrendingEntity
 import com.kitsunime.data.local.entity.MangaEntity

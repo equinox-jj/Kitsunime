@@ -1,4 +1,4 @@
-package com.kitsunime.data.local
+package com.kitsunime.data.local.dao
 
 import androidx.room.Dao
 import androidx.room.Insert

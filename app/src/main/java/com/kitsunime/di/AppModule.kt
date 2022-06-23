@@ -4,11 +4,16 @@ import android.content.Context
 import androidx.room.Room
 import com.kitsunime.common.Constants.BASE_URL
 import com.kitsunime.common.Constants.KITSU_DATABASE
-import com.kitsunime.data.local.KitsuDao
 import com.kitsunime.data.local.KitsuDatabase
+import com.kitsunime.data.local.dao.KitsuDao
 import com.kitsunime.data.remote.KitsuService
 import com.kitsunime.data.repository.Repository
 import com.kitsunime.domain.repository.IRepository
+import com.kitsunime.domain.use_case.UseCases
+import com.kitsunime.domain.use_case.anime_use_cases.GetAnimeListUseCase
+import com.kitsunime.domain.use_case.anime_use_cases.GetAnimeTrendingListUseCase
+import com.kitsunime.domain.use_case.manga_use_cases.GetMangaListUseCase
+import com.kitsunime.domain.use_case.manga_use_cases.GetMangaTrendingListUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,7 +29,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    // NETWORK / RETROFIT
+    /** NETWORK/RETROFIT */
     @Singleton
     @Provides
     fun providesHttpClient(): OkHttpClient {
@@ -59,7 +64,7 @@ object AppModule {
         return retrofit.create(KitsuService::class.java)
     }
 
-    // DATABASE
+    /** DATABASE */
     @Singleton
     @Provides
     fun provideDatabase(
@@ -72,15 +77,26 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun kitsuDao(database: KitsuDatabase) = database.kitsuDao()
-
-    @Provides
-    @Singleton
     fun provideRepository(
         kitsuService: KitsuService,
         kitsuDao: KitsuDao,
     ): IRepository {
         return Repository(kitsuService, kitsuDao)
+    }
+
+    @Singleton
+    @Provides
+    fun kitsuDao(database: KitsuDatabase) = database.kitsuDao()
+
+    @Singleton
+    @Provides
+    fun provideUseCases(repository: Repository): UseCases {
+        return UseCases(
+            getAnimeListUseCase = GetAnimeListUseCase(repository),
+            getAnimeTrendingListUseCase = GetAnimeTrendingListUseCase(repository),
+            getMangaListUseCase = GetMangaListUseCase(repository),
+            getMangaTrendingListUseCase = GetMangaTrendingListUseCase(repository)
+        )
     }
 
 }

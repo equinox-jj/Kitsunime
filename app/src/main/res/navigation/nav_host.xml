@@ -18,4 +18,18 @@
         android:label="Manga"
         tools:layout="@layout/fragment_manga" />
 
+
+    <fragment
+        android:id="@+id/discoverFragment"
+        android:name="com.kitsunime.presentation.discover.DiscoverFragment"
+        android:label="fragment_discover"
+        tools:layout="@layout/fragment_discover" />
+
+
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.kitsunime.presentation.favorite.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
+
 </navigation>

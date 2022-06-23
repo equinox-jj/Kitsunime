@@ -1,7 +1,6 @@
 package com.kitsunime.presentation.anime
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -57,7 +56,6 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
     private fun observeAnimeTrending() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                Log.d("Lifecycle :", this.toString())
                 animeVm.animeTrendingUiState.collect { uiState ->
                     when {
                         uiState.isLoading -> {
@@ -80,11 +78,6 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
                 }
             }
         }
-//        viewLifecycleOwner.lifecycleScope.launch {
-//            animeVm.animeTrendingUiState.collect {
-//                binding.animeRefresh.isRefreshing = it.isLoading
-//            }
-//        }
     }
 
     private fun observeAnime() {
@@ -112,17 +105,11 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
                 }
             }
         }
-//        viewLifecycleOwner.lifecycleScope.launch {
-//            animeVm.animeUiState.collect {
-//                binding.animeRefresh.isRefreshing = it.isLoading
-//            }
-//        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        Log.d("onDestroy :", this.toString())
     }
 
 }

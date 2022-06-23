@@ -1,7 +1,7 @@
 package com.kitsunime.data.repository
 
 import com.kitsunime.common.Resource
-import com.kitsunime.data.local.KitsuDao
+import com.kitsunime.data.local.dao.KitsuDao
 import com.kitsunime.data.mapping.*
 import com.kitsunime.data.remote.KitsuService
 import com.kitsunime.data.remote.dto.KitsuResults
