@@ -5,8 +5,10 @@ import com.kitsunime.data.local.dao.KitsuDao
 import com.kitsunime.data.remote.KitsuService
 import com.kitsunime.domain.model.KitsuResult
 import com.kitsunime.domain.repository.IRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
@@ -35,7 +37,7 @@ class Repository @Inject constructor(
 
         val newKitsuDao = dao.getAnimeTrendingDao().map { it.toKitsuResult() }
         emit(Resource.Success(newKitsuDao))
-    }
+    }.flowOn(Dispatchers.IO)
 
     override fun getAnimeList(): Flow<Resource<List<KitsuResult>>> = flow {
         emit(Resource.Loading())
@@ -55,7 +57,7 @@ class Repository @Inject constructor(
 
         val newKitsuDao = dao.getAnimeDao().map { it.toKitsuResult() }
         emit(Resource.Success(newKitsuDao))
-    }
+    }.flowOn(Dispatchers.IO)
 
     override fun getMangaTrendingList(): Flow<Resource<List<KitsuResult>>> = flow {
         emit(Resource.Loading())
@@ -75,7 +77,7 @@ class Repository @Inject constructor(
 
         val newKitsuDao = dao.getMangaTrendingDao().map { it.toKitsuResult() }
         emit(Resource.Success(newKitsuDao))
-    }
+    }.flowOn(Dispatchers.IO)
 
     override fun getMangaList(): Flow<Resource<List<KitsuResult>>> = flow {
         emit(Resource.Loading())
@@ -95,6 +97,6 @@ class Repository @Inject constructor(
 
         val newKitsuDao = dao.getMangaDao().map { it.toKitsuResult() }
         emit(Resource.Success(newKitsuDao))
-    }
+    }.flowOn(Dispatchers.IO)
 
 }
