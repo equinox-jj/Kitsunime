@@ -9,11 +9,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class AnimeViewModel @Inject constructor(
-    private val useCases: UseCases
+    private val useCases: UseCases,
 ) : ViewModel() {
 
     private val _animeTrendingUiState = MutableStateFlow(AnimeTrendingUiState())
@@ -33,35 +34,39 @@ class AnimeViewModel @Inject constructor(
     }
 
     private fun getAnimeTrendingList() {
-        useCases.getAnimeTrendingListUseCase().onEach { result ->
-            when (result) {
-                is Resource.Success -> {
-                    _animeTrendingUiState.value = AnimeTrendingUiState(isLoading = false, data = result.data ?: emptyList())
+        viewModelScope.launch {
+            useCases.getAnimeTrendingListUseCase().onEach { result ->
+                when (result) {
+                    is Resource.Success -> {
+                        _animeTrendingUiState.value = AnimeTrendingUiState(isLoading = false, data = result.data ?: emptyList())
+                    }
+                    is Resource.Error -> {
+                        _animeTrendingUiState.value = AnimeTrendingUiState(isLoading = false, data = result.data ?: emptyList(), error = result.message ?: "An unexpected error occurred.")
+                    }
+                    is Resource.Loading -> {
+                        _animeTrendingUiState.value = AnimeTrendingUiState(isLoading = true, data = result.data ?: emptyList())
+                    }
                 }
-                is Resource.Error -> {
-                    _animeTrendingUiState.value = AnimeTrendingUiState(isLoading = false, data = result.data ?: emptyList(), error = result.message ?: "An unexpected error occurred.")
-                }
-                is Resource.Loading -> {
-                    _animeTrendingUiState.value = AnimeTrendingUiState(isLoading = true, data = result.data ?: emptyList())
-                }
-            }
-        }.launchIn(viewModelScope)
+            }.launchIn(this)
+        }
     }
 
     private fun getAnimeList() {
-        useCases.getAnimeListUseCase().onEach { result ->
-            when (result) {
-                is Resource.Success -> {
-                    _animeUiState.value = AnimeUiState(isLoading = false, data = result.data ?: emptyList())
+        viewModelScope.launch {
+            useCases.getAnimeListUseCase().onEach { result ->
+                when (result) {
+                    is Resource.Success -> {
+                        _animeUiState.value = AnimeUiState(isLoading = false, data = result.data ?: emptyList())
+                    }
+                    is Resource.Error -> {
+                        _animeUiState.value = AnimeUiState(isLoading = false, data = result.data ?: emptyList(), error = result.message ?: "An unexpected error occurred.")
+                    }
+                    is Resource.Loading -> {
+                        _animeUiState.value = AnimeUiState(isLoading = true, data = result.data ?: emptyList())
+                    }
                 }
-                is Resource.Error -> {
-                    _animeUiState.value = AnimeUiState(isLoading = false, data = result.data ?: emptyList(), error = result.message ?: "An unexpected error occurred.")
-                }
-                is Resource.Loading -> {
-                    _animeUiState.value = AnimeUiState(isLoading = true, data = result.data ?: emptyList())
-                }
-            }
-        }.launchIn(viewModelScope)
+            }.launchIn(this)
+        }
     }
 
 }
