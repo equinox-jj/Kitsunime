@@ -39,6 +39,7 @@ class MangaFragment : Fragment(R.layout.fragment_manga) {
     private fun setOnRefresh() {
         binding.mangaRefresh.setOnRefreshListener {
             mangaVm.refresh()
+            binding.mangaRefresh.isRefreshing = false
         }
     }
 
@@ -74,7 +75,6 @@ class MangaFragment : Fragment(R.layout.fragment_manga) {
                             binding.contMangaListTrend.root.setVisibilityGone()
                         }
                     }
-                    binding.mangaRefresh.isRefreshing = uiState.isLoading
                 }
             }
         }
@@ -101,7 +101,6 @@ class MangaFragment : Fragment(R.layout.fragment_manga) {
                             binding.contMangaList.root.setVisibilityGone()
                         }
                     }
-                    binding.mangaRefresh.isRefreshing = uiState.isLoading
                 }
             }
         }

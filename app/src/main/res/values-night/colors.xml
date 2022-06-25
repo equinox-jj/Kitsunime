@@ -11,9 +11,9 @@
 
     <color name="shimmer_grey">#8F8B8B</color>
     <color name="shimmer_dark_grey">#433F3F</color>
-    <color name="text_color">#000000</color>
+    <color name="text_color">#FFFFFF</color>
     <color name="text_card_color">#FFFFFF</color>
-    <color name="search_color">#F6F2F2</color>
+    <color name="search_color">#2B2426</color>
 
     <color name="transparent">#80000000</color>
 

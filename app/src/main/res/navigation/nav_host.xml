@@ -22,14 +22,14 @@
     <fragment
         android:id="@+id/discoverFragment"
         android:name="com.kitsunime.presentation.discover.DiscoverFragment"
-        android:label="fragment_discover"
+        android:label="Discover"
         tools:layout="@layout/fragment_discover" />
 
 
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.kitsunime.presentation.favorite.FavoriteFragment"
-        android:label="fragment_favorite"
+        android:label="Favorite"
         tools:layout="@layout/fragment_favorite" />
 
 </navigation>

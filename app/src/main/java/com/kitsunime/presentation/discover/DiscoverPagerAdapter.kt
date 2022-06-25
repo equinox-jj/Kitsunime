@@ -14,6 +14,4 @@ class DiscoverPagerAdapter(
     override fun createFragment(position: Int): Fragment {
         return fragmentTabs[position]
     }
-
-
 }

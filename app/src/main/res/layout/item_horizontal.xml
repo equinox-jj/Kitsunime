@@ -26,6 +26,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textAnimeType"
             android:layout_width="wrap_content"
+            android:textColor="@color/text_card_color"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/shadow_text"
@@ -53,6 +54,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:textColor="@color/text_card_color"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:ellipsize="marquee"
@@ -75,6 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
+            android:textColor="@color/text_card_color"
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/nunito_bold"
             android:textSize="15sp"

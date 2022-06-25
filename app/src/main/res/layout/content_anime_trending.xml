@@ -10,6 +10,7 @@
         android:id="@+id/tvTrendingAnime"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textColor="@color/text_color"
         android:layout_margin="8dp"
         android:fontFamily="@font/nunito_black"
         android:gravity="center_horizontal"

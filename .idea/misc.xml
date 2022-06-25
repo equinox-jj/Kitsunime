@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/drawable/bg_search.xml" value="0.139" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/drawable/color_gradient.xml" value="0.131" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/drawable/ic_home.xml" value="0.131" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/drawable/search_rounded.xml" value="0.139" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/drawable/shadow_bottom.xml" value="0.131" />
+        <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/drawable/shadow_cover.xml" value="0.139" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/drawable/shadow_cover_detail.xml" value="0.139" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/drawable/shadow_text.xml" value="0.1" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/activity_main.xml" value="0.2" />
@@ -16,8 +18,8 @@
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/content_manga.xml" value="0.14921875" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/content_manga_trending.xml" value="0.16324786324786325" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/content_trending_anime_list.xml" value="0.2" />
-        <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/fragment_anime.xml" value="0.1" />
-        <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/fragment_discover.xml" value="0.18489583333333334" />
+        <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/fragment_anime.xml" value="0.18" />
+        <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/fragment_discover.xml" value="0.25" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/fragment_discover_anime.xml" value="0.18489583333333334" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/fragment_discover_manga.xml" value="0.18489583333333334" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/fragment_favorite.xml" value="0.18489583333333334" />
@@ -31,8 +33,10 @@
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_horizontal_list.xml" value="0.2" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_horizontal_placeholder.xml" value="0.2" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_list_placeholder.xml" value="0.2" />
+        <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_load_state_discover.xml" value="0.2" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_manga_list.xml" value="0.4140625" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_manga_trending_list.xml" value="0.16324786324786325" />
+        <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_paging_placeholder.xml" value="0.19895833333333332" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_trending_placeholder.xml" value="0.2" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_vertical.xml" value="0.2" />
         <entry key="..\:/Project/AndroidProject/Kitsunime/app/src/main/res/layout/item_vertical_list.xml" value="0.25" />

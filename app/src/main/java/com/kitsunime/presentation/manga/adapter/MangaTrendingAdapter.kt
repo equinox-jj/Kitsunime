@@ -23,7 +23,7 @@ class MangaTrendingAdapter : RecyclerView.Adapter<MangaTrendingAdapter.MangaTren
 
                 imageAnimePoster.load(posterImage?.small) {
                     crossfade(1000)
-                    error(R.drawable.color_gradient)
+                    error(R.drawable.bg_placeholder)
                 }
                 textAnimeTitle.isSelected = true
                 textAnimeTitle.text = mangaResult.attributes?.canonicalTitle

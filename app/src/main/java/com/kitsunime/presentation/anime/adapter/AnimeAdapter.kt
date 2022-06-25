@@ -27,11 +27,11 @@ class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeListVH>() {
 
                 imageAnimeCover.load(coverImage?.small) {
                     crossfade(1000)
-                    error(R.drawable.color_gradient)
+                    error(R.drawable.bg_placeholder)
                 }
                 imageAnimePoster.load(posterImage?.small) {
                     crossfade(1000)
-                    error(R.drawable.color_gradient)
+                    error(R.drawable.bg_placeholder)
                 }
                 textAnimeTitle.isSelected = true
                 textAnimeTitle.text = animeResult.attributes?.canonicalTitle
