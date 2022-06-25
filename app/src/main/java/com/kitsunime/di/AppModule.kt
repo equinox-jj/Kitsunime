@@ -11,8 +11,10 @@ import com.kitsunime.data.repository.Repository
 import com.kitsunime.domain.repository.IRepository
 import com.kitsunime.domain.use_case.UseCases
 import com.kitsunime.domain.use_case.anime_use_cases.GetAnimeListUseCase
+import com.kitsunime.domain.use_case.anime_use_cases.GetAnimePagingUseCase
 import com.kitsunime.domain.use_case.anime_use_cases.GetAnimeTrendingListUseCase
 import com.kitsunime.domain.use_case.manga_use_cases.GetMangaListUseCase
+import com.kitsunime.domain.use_case.manga_use_cases.GetMangaPagingUseCase
 import com.kitsunime.domain.use_case.manga_use_cases.GetMangaTrendingListUseCase
 import dagger.Module
 import dagger.Provides
@@ -94,8 +96,10 @@ object AppModule {
         return UseCases(
             getAnimeListUseCase = GetAnimeListUseCase(repository),
             getAnimeTrendingListUseCase = GetAnimeTrendingListUseCase(repository),
+            getAnimePagingUseCase = GetAnimePagingUseCase(repository),
             getMangaListUseCase = GetMangaListUseCase(repository),
-            getMangaTrendingListUseCase = GetMangaTrendingListUseCase(repository)
+            getMangaTrendingListUseCase = GetMangaTrendingListUseCase(repository),
+            getMangaPagingUseCase = GetMangaPagingUseCase(repository)
         )
     }
 

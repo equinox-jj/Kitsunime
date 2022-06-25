@@ -6,12 +6,8 @@ import com.kitsunime.domain.repository.IRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetAnimeTrendingListUseCase @Inject constructor(
-    private val repository: IRepository,
-) {
-
+class GetAnimeTrendingListUseCase @Inject constructor(private val repository: IRepository) {
     operator fun invoke(): Flow<Resource<List<KitsuResult>>> {
         return repository.getAnimeTrendingList()
     }
-
 }

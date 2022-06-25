@@ -7,6 +7,9 @@ object Constants {
     const val ANIME_TRENDING = "trending/anime"
     const val MANGA = "manga"
     const val MANGA_TRENDING = "trending/manga"
+    const val CATEGORIES = "categories"
+    const val OFFSET = 0
+    const val LIMIT = 10
 
     const val KITSU_DATABASE = "kitsu_databases"
     const val ANIME_TRENDING_ENTITY = "anime_trending_table"

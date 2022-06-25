@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -34,39 +33,35 @@ class MangaViewModel @Inject constructor(
     }
 
     private fun getMangaTrendingList() {
-        viewModelScope.launch {
-            useCases.getMangaTrendingListUseCase().onEach { result ->
-                when (result) {
-                    is Resource.Success -> {
-                        _mangaTrendingUiState.value = MangaTrendingUiState(isLoading = false, data = result.data ?: emptyList())
-                    }
-                    is Resource.Error -> {
-                        _mangaTrendingUiState.value = MangaTrendingUiState(isLoading = false, data = result.data ?: emptyList(), error = result.message ?: "An unexpected error occurred.")
-                    }
-                    is Resource.Loading -> {
-                        _mangaTrendingUiState.value = MangaTrendingUiState(isLoading = true, data = result.data ?: emptyList())
-                    }
+        useCases.getMangaTrendingListUseCase().onEach { result ->
+            when (result) {
+                is Resource.Success -> {
+                    _mangaTrendingUiState.value = MangaTrendingUiState(isLoading = false, data = result.data ?: emptyList())
                 }
-            }.launchIn(this)
-        }
+                is Resource.Error -> {
+                    _mangaTrendingUiState.value = MangaTrendingUiState(isLoading = false, data = result.data ?: emptyList(), error = result.message ?: "An unexpected error occurred.")
+                }
+                is Resource.Loading -> {
+                    _mangaTrendingUiState.value = MangaTrendingUiState(isLoading = true, data = result.data ?: emptyList())
+                }
+            }
+        }.launchIn(viewModelScope)
     }
 
     private fun getMangaList() {
-        viewModelScope.launch {
-            useCases.getMangaListUseCase().onEach { result ->
-                when (result) {
-                    is Resource.Success -> {
-                        _mangaUiState.value = MangaUiState(isLoading = false, data = result.data ?: emptyList())
-                    }
-                    is Resource.Error -> {
-                        _mangaUiState.value = MangaUiState(isLoading = false, data = result.data ?: emptyList(), error = result.message ?: "An unexpected error occurred.")
-                    }
-                    is Resource.Loading -> {
-                        _mangaUiState.value = MangaUiState(isLoading = true, data = result.data ?: emptyList())
-                    }
+        useCases.getMangaListUseCase().onEach { result ->
+            when (result) {
+                is Resource.Success -> {
+                    _mangaUiState.value = MangaUiState(isLoading = false, data = result.data ?: emptyList())
                 }
-            }.launchIn(this)
-        }
+                is Resource.Error -> {
+                    _mangaUiState.value = MangaUiState(isLoading = false, data = result.data ?: emptyList(), error = result.message ?: "An unexpected error occurred.")
+                }
+                is Resource.Loading -> {
+                    _mangaUiState.value = MangaUiState(isLoading = true, data = result.data ?: emptyList())
+                }
+            }
+        }.launchIn(viewModelScope)
     }
 
 }

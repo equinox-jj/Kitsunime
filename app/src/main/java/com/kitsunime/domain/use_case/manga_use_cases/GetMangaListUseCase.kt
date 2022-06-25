@@ -6,12 +6,8 @@ import com.kitsunime.domain.model.KitsuResult
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetMangaListUseCase @Inject constructor(
-    private val repository: Repository,
-) {
-
+class GetMangaListUseCase @Inject constructor(private val repository: Repository) {
     operator fun invoke(): Flow<Resource<List<KitsuResult>>> {
         return repository.getMangaList()
     }
-
 }

@@ -1,7 +1,12 @@
 package com.kitsunime.data.repository
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import com.kitsunime.common.Constants.LIMIT
 import com.kitsunime.common.Resource
 import com.kitsunime.data.local.dao.KitsuDao
+import com.kitsunime.data.paging.AnimePagingSource
 import com.kitsunime.data.remote.KitsuService
 import com.kitsunime.domain.model.KitsuResult
 import com.kitsunime.domain.repository.IRepository
@@ -98,5 +103,14 @@ class Repository @Inject constructor(
         val newKitsuDao = dao.getMangaDao().map { it.toKitsuResult() }
         emit(Resource.Success(newKitsuDao))
     }.flowOn(Dispatchers.IO)
+
+    override fun getAnimePagingSource(): Flow<PagingData<KitsuResult>> = Pager(
+        config = PagingConfig(enablePlaceholders = false, pageSize = LIMIT),
+        pagingSourceFactory = { AnimePagingSource(api) }
+    ).flow
+
+    override fun getMangaPagingSource(): Flow<PagingData<KitsuResult>> {
+        return flow {  }
+    }
 
 }
