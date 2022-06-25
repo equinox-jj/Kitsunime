@@ -27,7 +27,7 @@ class DiscoverViewModel @Inject constructor(
 
     private fun discAnime() {
         viewModelScope.launch {
-            delay(1000)
+            delay(1000L)
             useCases.getAnimePagingUseCase()
                 .cachedIn(viewModelScope)
                 .collect { data ->

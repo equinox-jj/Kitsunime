@@ -36,13 +36,17 @@ class MangaViewModel @Inject constructor(
         useCases.getMangaTrendingListUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
-                    _mangaTrendingUiState.value = MangaTrendingUiState(isLoading = false, data = result.data ?: emptyList())
+                    _mangaTrendingUiState.value = mangaTrendingUiState.value.copy(isLoading = false,
+                        data = result.data ?: emptyList())
                 }
                 is Resource.Error -> {
-                    _mangaTrendingUiState.value = MangaTrendingUiState(isLoading = false, data = result.data ?: emptyList(), error = result.message ?: "An unexpected error occurred.")
+                    _mangaTrendingUiState.value = mangaTrendingUiState.value.copy(isLoading = false,
+                        data = result.data ?: emptyList(),
+                        error = result.message ?: "An unexpected error occurred.")
                 }
                 is Resource.Loading -> {
-                    _mangaTrendingUiState.value = MangaTrendingUiState(isLoading = true, data = result.data ?: emptyList())
+                    _mangaTrendingUiState.value = mangaTrendingUiState.value.copy(isLoading = true,
+                        data = result.data ?: emptyList())
                 }
             }
         }.launchIn(viewModelScope)
@@ -52,13 +56,17 @@ class MangaViewModel @Inject constructor(
         useCases.getMangaListUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
-                    _mangaUiState.value = MangaUiState(isLoading = false, data = result.data ?: emptyList())
+                    _mangaUiState.value = mangaUiState.value.copy(isLoading = false,
+                        data = result.data ?: emptyList())
                 }
                 is Resource.Error -> {
-                    _mangaUiState.value = MangaUiState(isLoading = false, data = result.data ?: emptyList(), error = result.message ?: "An unexpected error occurred.")
+                    _mangaUiState.value = mangaUiState.value.copy(isLoading = false,
+                        data = result.data ?: emptyList(),
+                        error = result.message ?: "An unexpected error occurred.")
                 }
                 is Resource.Loading -> {
-                    _mangaUiState.value = MangaUiState(isLoading = true, data = result.data ?: emptyList())
+                    _mangaUiState.value =
+                        mangaUiState.value.copy(isLoading = true, data = result.data ?: emptyList())
                 }
             }
         }.launchIn(viewModelScope)
