@@ -4,9 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import com.kitsunime.domain.use_case.UseCases
-import com.kitsunime.presentation.discover.anime.DiscoverAnimeUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -27,10 +25,7 @@ class DiscoverViewModel @Inject constructor(
 
     private fun discAnime() {
         viewModelScope.launch {
-            delay(1000L)
-            useCases.getAnimePagingUseCase()
-                .cachedIn(viewModelScope)
-                .collect { data ->
+            useCases.getAnimePagingUseCase().cachedIn(viewModelScope).collect { data ->
                     _discAnimeUiState.update { uiState ->
                         uiState.copy(data = data)
                     }

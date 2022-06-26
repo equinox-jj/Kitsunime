@@ -14,7 +14,7 @@ import com.kitsunime.common.setVisibilityVisible
 import com.kitsunime.databinding.FragmentDiscoverAnimeBinding
 import com.kitsunime.presentation.discover.DiscoverLoadStateAdapter
 import com.kitsunime.presentation.discover.DiscoverViewModel
-import com.kitsunime.presentation.discover.anime.adapter.DiscoverAnimeAdapter
+import com.kitsunime.presentation.discover.adapter.DiscoverAnimeAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

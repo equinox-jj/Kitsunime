@@ -7,7 +7,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.google.android.material.snackbar.Snackbar
 import com.kitsunime.R
 import com.kitsunime.common.setVisibilityGone
 import com.kitsunime.common.setVisibilityVisible
@@ -26,7 +25,6 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
     private val animeVm: AnimeViewModel by viewModels()
     private val animeTrendingAdapter by lazy { AnimeTrendingAdapter() }
     private val animeAdapter by lazy { AnimeAdapter() }
-    private var snackBar: Snackbar? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

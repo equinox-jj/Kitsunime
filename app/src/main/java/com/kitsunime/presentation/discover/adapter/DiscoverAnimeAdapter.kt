@@ -1,4 +1,4 @@
-package com.kitsunime.presentation.discover.anime.adapter
+package com.kitsunime.presentation.discover.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -52,7 +52,8 @@ class DiscoverAnimeAdapter :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiscoverAnimeViewHolder {
-        val binding = ItemVerticalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemVerticalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return DiscoverAnimeViewHolder(binding)
     }
 

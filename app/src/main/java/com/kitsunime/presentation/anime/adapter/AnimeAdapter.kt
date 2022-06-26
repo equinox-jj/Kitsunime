@@ -2,6 +2,7 @@ package com.kitsunime.presentation.anime.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -9,6 +10,7 @@ import com.kitsunime.R
 import com.kitsunime.common.DiffUtils
 import com.kitsunime.databinding.ItemVerticalBinding
 import com.kitsunime.domain.model.KitsuResult
+import com.kitsunime.presentation.anime.AnimeFragmentDirections
 
 class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeListVH>() {
 
@@ -41,6 +43,11 @@ class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeListVH>() {
                 textAnimeTotalEp.text = if (totalEp != null) "Episode : $totalEp Episodes" else "Episodes : Unknown"
                 textAnimeType.text = animeResult.attributes?.subtype?.replaceFirstChar { it.uppercase() }
                 textAnimeStatus.text = animeResult.attributes?.status?.replaceFirstChar { it.uppercase() }
+
+                materialCardView.setOnClickListener {
+                    val action = AnimeFragmentDirections.actionAnimeFragmentToDetailFragment()
+                    it.findNavController().navigate(action)
+                }
             }
         }
     }
@@ -57,10 +64,10 @@ class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeListVH>() {
     override fun getItemCount(): Int = animeResult.size
 
     fun submitData(newData: List<KitsuResult>) {
-        val animeDiffUtil = DiffUtils(animeResult, newData)
-        val diffUtil = DiffUtil.calculateDiff(animeDiffUtil)
+        val oldData = DiffUtils(animeResult, newData)
+        val result = DiffUtil.calculateDiff(oldData)
         animeResult = newData
-        diffUtil.dispatchUpdatesTo(this)
+        result.dispatchUpdatesTo(this)
     }
 
 }

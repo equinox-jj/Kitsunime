@@ -45,10 +45,10 @@ class MangaTrendingAdapter : RecyclerView.Adapter<MangaTrendingAdapter.MangaTren
     override fun getItemCount(): Int = mangaResult.size
 
     fun submitData(newData: List<KitsuResult>) {
-        val mangaDiffUtil = DiffUtils(mangaResult, newData)
-        val diffUtil = DiffUtil.calculateDiff(mangaDiffUtil)
+        val oldData = DiffUtils(mangaResult, newData)
+        val result = DiffUtil.calculateDiff(oldData)
         mangaResult = newData
-        diffUtil.dispatchUpdatesTo(this)
+        result.dispatchUpdatesTo(this)
     }
 
 }

@@ -9,21 +9,37 @@
         android:id="@+id/animeFragment"
         android:name="com.kitsunime.presentation.anime.AnimeFragment"
         android:label="Anime"
-        tools:layout="@layout/fragment_anime" />
+        tools:layout="@layout/fragment_anime" >
+        <action
+            android:id="@+id/action_animeFragment_to_detailFragment"
+            app:destination="@id/detailFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
 
 
     <fragment
         android:id="@+id/mangaFragment"
         android:name="com.kitsunime.presentation.manga.MangaFragment"
         android:label="Manga"
-        tools:layout="@layout/fragment_manga" />
+        tools:layout="@layout/fragment_manga" >
+        <action
+            android:id="@+id/action_mangaFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
 
 
     <fragment
         android:id="@+id/discoverFragment"
         android:name="com.kitsunime.presentation.discover.DiscoverFragment"
         android:label="Discover"
-        tools:layout="@layout/fragment_discover" />
+        tools:layout="@layout/fragment_discover" >
+        <action
+            android:id="@+id/action_discoverFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
 
 
     <fragment
@@ -31,5 +47,19 @@
         android:name="com.kitsunime.presentation.favorite.FavoriteFragment"
         android:label="Favorite"
         tools:layout="@layout/fragment_favorite" />
+
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.kitsunime.presentation.detail.DetailFragment"
+        android:label="Detail"
+        tools:layout="@layout/fragment_detail" />
+
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.kitsunime.presentation.search.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search" />
 
 </navigation>

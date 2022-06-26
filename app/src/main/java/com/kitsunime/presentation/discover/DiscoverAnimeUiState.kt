@@ -1,4 +1,4 @@
-package com.kitsunime.presentation.discover.anime
+package com.kitsunime.presentation.discover
 
 import androidx.paging.PagingData
 import com.kitsunime.domain.model.KitsuResult
