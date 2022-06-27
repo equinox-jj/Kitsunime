@@ -26,10 +26,10 @@ class DiscoverViewModel @Inject constructor(
     private fun discAnime() {
         viewModelScope.launch {
             useCases.getAnimePagingUseCase().cachedIn(viewModelScope).collect { data ->
-                    _discAnimeUiState.update { uiState ->
-                        uiState.copy(data = data)
-                    }
+                _discAnimeUiState.update { previousState ->
+                    previousState.copy(data = data)
                 }
+            }
         }
     }
 

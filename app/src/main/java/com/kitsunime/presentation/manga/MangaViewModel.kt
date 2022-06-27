@@ -5,10 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.kitsunime.common.Resource
 import com.kitsunime.domain.use_case.UseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -36,17 +33,29 @@ class MangaViewModel @Inject constructor(
         useCases.getMangaTrendingListUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
-                    _mangaTrendingUiState.value = mangaTrendingUiState.value.copy(isLoading = false,
-                        data = result.data ?: emptyList())
+                    _mangaTrendingUiState.update { previousState ->
+                        previousState.copy(
+                            isLoading = false,
+                            data = result.data ?: emptyList()
+                        )
+                    }
                 }
                 is Resource.Error -> {
-                    _mangaTrendingUiState.value = mangaTrendingUiState.value.copy(isLoading = false,
-                        data = result.data ?: emptyList(),
-                        error = result.message ?: "An unexpected error occurred.")
+                    _mangaTrendingUiState.update { previousState ->
+                        previousState.copy(
+                            isLoading = false,
+                            data = result.data ?: emptyList(),
+                            error = result.message ?: "An unexpected error occurred."
+                        )
+                    }
                 }
                 is Resource.Loading -> {
-                    _mangaTrendingUiState.value = mangaTrendingUiState.value.copy(isLoading = true,
-                        data = result.data ?: emptyList())
+                    _mangaTrendingUiState.update { previousState ->
+                        previousState.copy(
+                            isLoading = true,
+                            data = result.data ?: emptyList()
+                        )
+                    }
                 }
             }
         }.launchIn(viewModelScope)
@@ -56,17 +65,29 @@ class MangaViewModel @Inject constructor(
         useCases.getMangaListUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
-                    _mangaUiState.value = mangaUiState.value.copy(isLoading = false,
-                        data = result.data ?: emptyList())
+                    _mangaUiState.update { previousState ->
+                        previousState.copy(
+                            isLoading = false,
+                            data = result.data ?: emptyList()
+                        )
+                    }
                 }
                 is Resource.Error -> {
-                    _mangaUiState.value = mangaUiState.value.copy(isLoading = false,
-                        data = result.data ?: emptyList(),
-                        error = result.message ?: "An unexpected error occurred.")
+                    _mangaUiState.update { previousState ->
+                        previousState.copy(
+                            isLoading = false,
+                            data = result.data ?: emptyList(),
+                            error = result.message ?: "An unexpected error occurred."
+                        )
+                    }
                 }
                 is Resource.Loading -> {
-                    _mangaUiState.value =
-                        mangaUiState.value.copy(isLoading = true, data = result.data ?: emptyList())
+                    _mangaUiState.update { previousState ->
+                        previousState.copy(
+                            isLoading = true,
+                            data = result.data ?: emptyList()
+                        )
+                    }
                 }
             }
         }.launchIn(viewModelScope)

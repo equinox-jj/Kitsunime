@@ -31,10 +31,7 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-//                R.id.searchAnimeFragment,
-//                R.id.searchMangaFragment,
-//                R.id.detailMangaFragment,
-//                R.id.detailAnimeFragment -> isBottomNavVisible(false)
+                R.id.detailFragment -> isBottomNavVisible(false)
                 else -> isBottomNavVisible(true)
             }
         }

@@ -5,10 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.kitsunime.common.Resource
 import com.kitsunime.domain.use_case.UseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -36,18 +33,29 @@ class AnimeViewModel @Inject constructor(
         useCases.getAnimeTrendingListUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
-                    _animeTrendingUiState.value = animeTrendingUiState.value.copy(isLoading = false,
-                        data = result.data ?: emptyList())
-
+                    _animeTrendingUiState.update { previousState ->
+                        previousState.copy(
+                            isLoading = false,
+                            data = result.data ?: emptyList()
+                        )
+                    }
                 }
                 is Resource.Error -> {
-                    _animeTrendingUiState.value = animeTrendingUiState.value.copy(isLoading = false,
-                        data = result.data ?: emptyList(),
-                        error = result.message ?: "An unexpected error occurred.")
+                    _animeTrendingUiState.update { previousState ->
+                        previousState.copy(
+                            isLoading = false,
+                            data = result.data ?: emptyList(),
+                            error = result.message ?: "An unexpected error occurred."
+                        )
+                    }
                 }
                 is Resource.Loading -> {
-                    _animeTrendingUiState.value = animeTrendingUiState.value.copy(isLoading = true,
-                        data = result.data ?: emptyList())
+                    _animeTrendingUiState.update { previousState ->
+                        previousState.copy(
+                            isLoading = true,
+                            data = result.data ?: emptyList()
+                        )
+                    }
                 }
             }
         }.launchIn(viewModelScope)
@@ -57,17 +65,29 @@ class AnimeViewModel @Inject constructor(
         useCases.getAnimeListUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
-                    _animeUiState.value = animeUiState.value.copy(isLoading = false,
-                        data = result.data ?: emptyList())
+                    _animeUiState.update { previousState ->
+                        previousState.copy(
+                            isLoading = false,
+                            data = result.data ?: emptyList()
+                        )
+                    }
                 }
                 is Resource.Error -> {
-                    _animeUiState.value = animeUiState.value.copy(isLoading = false,
-                        data = result.data ?: emptyList(),
-                        error = result.message ?: "An unexpected error occurred.")
+                    _animeUiState.update { previousState ->
+                        previousState.copy(
+                            isLoading = false,
+                            data = result.data ?: emptyList(),
+                            error = result.message ?: "An unexpected error occurred."
+                        )
+                    }
                 }
                 is Resource.Loading -> {
-                    _animeUiState.value =
-                        animeUiState.value.copy(isLoading = true, data = result.data ?: emptyList())
+                    _animeUiState.update { previousState ->
+                        previousState.copy(
+                            isLoading = true,
+                            data = result.data ?: emptyList()
+                        )
+                    }
                 }
             }
         }.launchIn(viewModelScope)
