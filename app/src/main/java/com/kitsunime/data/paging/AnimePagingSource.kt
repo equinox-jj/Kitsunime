@@ -2,11 +2,11 @@ package com.kitsunime.data.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.kitsunime.common.Constants.CATEGORIES
-import com.kitsunime.common.Constants.LIMIT
-import com.kitsunime.common.Constants.OFFSET
 import com.kitsunime.data.remote.KitsuService
 import com.kitsunime.domain.model.KitsuResult
+import com.kitsunime.presentation.util.Constants.CATEGORIES
+import com.kitsunime.presentation.util.Constants.LIMIT
+import com.kitsunime.presentation.util.Constants.OFFSET
 import okio.IOException
 import retrofit2.HttpException
 import javax.inject.Inject

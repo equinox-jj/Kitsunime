@@ -1,4 +1,4 @@
-package com.kitsunime.common
+package com.kitsunime.presentation.util
 
 object Constants {
 

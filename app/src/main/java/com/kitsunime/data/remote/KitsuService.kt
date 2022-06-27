@@ -1,13 +1,13 @@
 package com.kitsunime.data.remote
 
-import com.kitsunime.common.Constants.ANIME
-import com.kitsunime.common.Constants.ANIME_TRENDING
-import com.kitsunime.common.Constants.CATEGORIES
-import com.kitsunime.common.Constants.LIMIT
-import com.kitsunime.common.Constants.MANGA
-import com.kitsunime.common.Constants.MANGA_TRENDING
-import com.kitsunime.common.Constants.OFFSET
 import com.kitsunime.data.remote.dto.ResponseDto
+import com.kitsunime.presentation.util.Constants.ANIME
+import com.kitsunime.presentation.util.Constants.ANIME_TRENDING
+import com.kitsunime.presentation.util.Constants.CATEGORIES
+import com.kitsunime.presentation.util.Constants.LIMIT
+import com.kitsunime.presentation.util.Constants.MANGA
+import com.kitsunime.presentation.util.Constants.MANGA_TRENDING
+import com.kitsunime.presentation.util.Constants.OFFSET
 import retrofit2.http.GET
 import retrofit2.http.Query
 

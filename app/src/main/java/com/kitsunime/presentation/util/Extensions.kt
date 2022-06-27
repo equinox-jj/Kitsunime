@@ -1,4 +1,4 @@
-package com.kitsunime.common
+package com.kitsunime.presentation.util
 
 import android.view.View
 import androidx.lifecycle.LifecycleOwner

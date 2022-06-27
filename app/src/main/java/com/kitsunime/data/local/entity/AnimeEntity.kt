@@ -2,10 +2,10 @@ package com.kitsunime.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.kitsunime.common.Constants.ANIME_ENTITY
 import com.kitsunime.domain.model.KitsuAttributes
 import com.kitsunime.domain.model.KitsuRelationships
 import com.kitsunime.domain.model.KitsuResult
+import com.kitsunime.presentation.util.Constants.ANIME_ENTITY
 
 @Entity(tableName = ANIME_ENTITY)
 data class AnimeEntity(

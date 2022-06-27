@@ -9,12 +9,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.paging.LoadState
 import com.kitsunime.R
-import com.kitsunime.common.setVisibilityGone
-import com.kitsunime.common.setVisibilityVisible
 import com.kitsunime.databinding.FragmentDiscoverAnimeBinding
 import com.kitsunime.presentation.discover.DiscoverLoadStateAdapter
 import com.kitsunime.presentation.discover.DiscoverViewModel
 import com.kitsunime.presentation.discover.adapter.DiscoverAnimeAdapter
+import com.kitsunime.presentation.util.setVisibilityGone
+import com.kitsunime.presentation.util.setVisibilityVisible
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

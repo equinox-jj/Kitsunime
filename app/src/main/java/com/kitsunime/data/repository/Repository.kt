@@ -3,13 +3,13 @@ package com.kitsunime.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.kitsunime.common.Constants.LIMIT
-import com.kitsunime.common.Resource
 import com.kitsunime.data.local.dao.KitsuDao
 import com.kitsunime.data.paging.AnimePagingSource
 import com.kitsunime.data.remote.KitsuService
 import com.kitsunime.domain.model.KitsuResult
 import com.kitsunime.domain.repository.IRepository
+import com.kitsunime.domain.util.Resource
+import com.kitsunime.presentation.util.Constants.LIMIT
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.kitsunime.common.setVisibilityGone
-import com.kitsunime.common.setVisibilityVisible
 import com.kitsunime.databinding.ItemLoadStateDiscoverBinding
+import com.kitsunime.presentation.util.setVisibilityGone
+import com.kitsunime.presentation.util.setVisibilityVisible
 
 class DiscoverLoadStateAdapter(private val retry: () -> Unit) :
     LoadStateAdapter<DiscoverLoadStateAdapter.LoadStateViewHolder>() {

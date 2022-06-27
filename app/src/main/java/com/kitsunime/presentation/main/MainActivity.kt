@@ -9,9 +9,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.kitsunime.R
-import com.kitsunime.common.setVisibilityGone
-import com.kitsunime.common.setVisibilityVisible
 import com.kitsunime.databinding.ActivityMainBinding
+import com.kitsunime.presentation.util.setVisibilityGone
+import com.kitsunime.presentation.util.setVisibilityVisible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

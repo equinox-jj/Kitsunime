@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.kitsunime.R
-import com.kitsunime.common.DiffUtils
 import com.kitsunime.databinding.ItemVerticalBinding
 import com.kitsunime.domain.model.KitsuResult
 import com.kitsunime.presentation.anime.AnimeFragmentDirections
+import com.kitsunime.presentation.util.DiffUtils
 
 class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeListVH>() {
 

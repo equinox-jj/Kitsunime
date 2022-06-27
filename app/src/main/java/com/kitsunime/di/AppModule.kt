@@ -2,8 +2,6 @@ package com.kitsunime.di
 
 import android.content.Context
 import androidx.room.Room
-import com.kitsunime.common.Constants.BASE_URL
-import com.kitsunime.common.Constants.KITSU_DATABASE
 import com.kitsunime.data.local.KitsuDatabase
 import com.kitsunime.data.local.dao.KitsuDao
 import com.kitsunime.data.remote.KitsuService
@@ -16,6 +14,8 @@ import com.kitsunime.domain.use_case.anime_use_cases.GetAnimeTrendingListUseCase
 import com.kitsunime.domain.use_case.manga_use_cases.GetMangaListUseCase
 import com.kitsunime.domain.use_case.manga_use_cases.GetMangaPagingUseCase
 import com.kitsunime.domain.use_case.manga_use_cases.GetMangaTrendingListUseCase
+import com.kitsunime.presentation.util.Constants.BASE_URL
+import com.kitsunime.presentation.util.Constants.KITSU_DATABASE
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

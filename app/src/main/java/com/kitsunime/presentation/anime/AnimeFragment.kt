@@ -8,11 +8,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.kitsunime.R
-import com.kitsunime.common.setVisibilityGone
-import com.kitsunime.common.setVisibilityVisible
 import com.kitsunime.databinding.FragmentAnimeBinding
 import com.kitsunime.presentation.anime.adapter.AnimeAdapter
 import com.kitsunime.presentation.anime.adapter.AnimeTrendingAdapter
+import com.kitsunime.presentation.util.setVisibilityGone
+import com.kitsunime.presentation.util.setVisibilityVisible
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
