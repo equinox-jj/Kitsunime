@@ -13,8 +13,8 @@ class AnimeViewModel @Inject constructor(
     private val useCases: UseCases,
 ) : ViewModel() {
 
-    private val _animeTrendingUiState = MutableStateFlow(AnimeTrendingUiState())
-    val animeTrendingUiState: StateFlow<AnimeTrendingUiState> = _animeTrendingUiState
+    private val _animeTrendingUiState = MutableStateFlow(AnimeUiState())
+    val animeTrendingUiState: StateFlow<AnimeUiState> = _animeTrendingUiState
 
     private val _animeUiState = MutableStateFlow(AnimeUiState())
     val animeUiState: StateFlow<AnimeUiState> = _animeUiState
@@ -36,7 +36,7 @@ class AnimeViewModel @Inject constructor(
                     _animeTrendingUiState.update { previousState ->
                         previousState.copy(
                             isLoading = false,
-                            data = result.data ?: emptyList()
+                            animeTrendingData = result.data ?: emptyList()
                         )
                     }
                 }
@@ -44,7 +44,7 @@ class AnimeViewModel @Inject constructor(
                     _animeTrendingUiState.update { previousState ->
                         previousState.copy(
                             isLoading = false,
-                            data = result.data ?: emptyList(),
+                            animeTrendingData = result.data ?: emptyList(),
                             error = result.message ?: "An unexpected error occurred."
                         )
                     }
@@ -53,7 +53,7 @@ class AnimeViewModel @Inject constructor(
                     _animeTrendingUiState.update { previousState ->
                         previousState.copy(
                             isLoading = true,
-                            data = result.data ?: emptyList()
+                            animeTrendingData = result.data ?: emptyList()
                         )
                     }
                 }
@@ -68,7 +68,7 @@ class AnimeViewModel @Inject constructor(
                     _animeUiState.update { previousState ->
                         previousState.copy(
                             isLoading = false,
-                            data = result.data ?: emptyList()
+                            animeData = result.data ?: emptyList()
                         )
                     }
                 }
@@ -76,7 +76,7 @@ class AnimeViewModel @Inject constructor(
                     _animeUiState.update { previousState ->
                         previousState.copy(
                             isLoading = false,
-                            data = result.data ?: emptyList(),
+                            animeData = result.data ?: emptyList(),
                             error = result.message ?: "An unexpected error occurred."
                         )
                     }
@@ -85,7 +85,7 @@ class AnimeViewModel @Inject constructor(
                     _animeUiState.update { previousState ->
                         previousState.copy(
                             isLoading = true,
-                            data = result.data ?: emptyList()
+                            animeData = result.data ?: emptyList()
                         )
                     }
                 }

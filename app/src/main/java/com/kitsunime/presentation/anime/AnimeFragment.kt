@@ -63,11 +63,11 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
                             binding.contShimAnimeListTrend.root.setVisibilityVisible()
                             binding.contAnimeListTrend.root.setVisibilityGone()
                         }
-                        uiState.data.isNotEmpty() -> {
+                        uiState.animeTrendingData.isNotEmpty() -> {
                             binding.contShimAnimeListTrend.root.stopShimmer()
                             binding.contShimAnimeListTrend.root.setVisibilityGone()
                             binding.contAnimeListTrend.root.setVisibilityVisible()
-                            animeTrendingAdapter.submitData(uiState.data)
+                            animeTrendingAdapter.submitData(uiState.animeTrendingData)
                         }
                         uiState.error.isNotEmpty() -> {
                             binding.contShimAnimeListTrend.root.stopShimmer()
@@ -89,11 +89,11 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
                             binding.contShimAnimeList.root.setVisibilityVisible()
                             binding.contAnimeList.root.setVisibilityGone()
                         }
-                        uiState.data.isNotEmpty() -> {
+                        uiState.animeData.isNotEmpty() -> {
                             binding.contShimAnimeList.root.stopShimmer()
                             binding.contShimAnimeList.root.setVisibilityGone()
                             binding.contAnimeList.root.setVisibilityVisible()
-                            animeAdapter.submitData(uiState.data)
+                            animeAdapter.submitData(uiState.animeData)
                         }
                         uiState.error.isNotEmpty() -> {
                             binding.contShimAnimeList.root.stopShimmer()

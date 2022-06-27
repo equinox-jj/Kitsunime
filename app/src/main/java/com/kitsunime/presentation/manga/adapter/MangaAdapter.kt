@@ -14,7 +14,7 @@ class MangaAdapter : RecyclerView.Adapter<MangaAdapter.MangaViewHolder>() {
 
     private var mangaResult = listOf<KitsuResult>()
 
-    inner class MangaViewHolder(private val binding: ItemVerticalBinding) :
+    class MangaViewHolder(private val binding: ItemVerticalBinding) :
         RecyclerView.ViewHolder(binding.root) {
             fun bind(mangaResult: KitsuResult) {
                 binding.apply {

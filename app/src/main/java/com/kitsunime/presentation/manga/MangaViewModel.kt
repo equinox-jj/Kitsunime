@@ -13,8 +13,8 @@ class MangaViewModel @Inject constructor(
     private val useCases: UseCases,
 ) : ViewModel() {
 
-    private val _mangaTrendingUiState = MutableStateFlow(MangaTrendingUiState())
-    val mangaTrendingUiState: StateFlow<MangaTrendingUiState> = _mangaTrendingUiState
+    private val _mangaTrendingUiState = MutableStateFlow(MangaUiState())
+    val mangaTrendingUiState: StateFlow<MangaUiState> = _mangaTrendingUiState
 
     private val _mangaUiState = MutableStateFlow(MangaUiState())
     val mangaUiState: StateFlow<MangaUiState> = _mangaUiState
@@ -36,7 +36,7 @@ class MangaViewModel @Inject constructor(
                     _mangaTrendingUiState.update { previousState ->
                         previousState.copy(
                             isLoading = false,
-                            data = result.data ?: emptyList()
+                            mangaTrendingData = result.data ?: emptyList()
                         )
                     }
                 }
@@ -44,7 +44,7 @@ class MangaViewModel @Inject constructor(
                     _mangaTrendingUiState.update { previousState ->
                         previousState.copy(
                             isLoading = false,
-                            data = result.data ?: emptyList(),
+                            mangaTrendingData = result.data ?: emptyList(),
                             error = result.message ?: "An unexpected error occurred."
                         )
                     }
@@ -53,7 +53,7 @@ class MangaViewModel @Inject constructor(
                     _mangaTrendingUiState.update { previousState ->
                         previousState.copy(
                             isLoading = true,
-                            data = result.data ?: emptyList()
+                            mangaTrendingData = result.data ?: emptyList()
                         )
                     }
                 }
@@ -68,7 +68,7 @@ class MangaViewModel @Inject constructor(
                     _mangaUiState.update { previousState ->
                         previousState.copy(
                             isLoading = false,
-                            data = result.data ?: emptyList()
+                            mangaData = result.data ?: emptyList()
                         )
                     }
                 }
@@ -76,7 +76,7 @@ class MangaViewModel @Inject constructor(
                     _mangaUiState.update { previousState ->
                         previousState.copy(
                             isLoading = false,
-                            data = result.data ?: emptyList(),
+                            mangaData = result.data ?: emptyList(),
                             error = result.message ?: "An unexpected error occurred."
                         )
                     }
@@ -85,7 +85,7 @@ class MangaViewModel @Inject constructor(
                     _mangaUiState.update { previousState ->
                         previousState.copy(
                             isLoading = true,
-                            data = result.data ?: emptyList()
+                            mangaData = result.data ?: emptyList()
                         )
                     }
                 }

@@ -14,7 +14,7 @@ class MangaTrendingAdapter : RecyclerView.Adapter<MangaTrendingAdapter.MangaTren
 
     private var mangaResult = listOf<KitsuResult>()
 
-    inner class MangaTrendingVH(private val binding: ItemHorizontalBinding) :
+    class MangaTrendingVH(private val binding: ItemHorizontalBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(mangaResult: KitsuResult) {
             binding.apply {

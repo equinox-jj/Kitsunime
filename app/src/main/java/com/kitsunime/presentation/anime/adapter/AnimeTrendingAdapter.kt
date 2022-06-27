@@ -14,7 +14,7 @@ class AnimeTrendingAdapter : RecyclerView.Adapter<AnimeTrendingAdapter.AnimeTren
 
     private var animeResult = listOf<KitsuResult>()
 
-    inner class AnimeTrendingVH(private val binding: ItemHorizontalBinding) :
+    class AnimeTrendingVH(private val binding: ItemHorizontalBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(animeResult: KitsuResult) {
             binding.apply {

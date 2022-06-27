@@ -4,6 +4,7 @@ import com.kitsunime.domain.model.KitsuResult
 
 data class MangaUiState(
     val isLoading: Boolean = false,
-    val data: List<KitsuResult> = emptyList(),
+    val mangaTrendingData: List<KitsuResult> = emptyList(),
+    val mangaData: List<KitsuResult> = emptyList(),
     val error: String = "",
 )

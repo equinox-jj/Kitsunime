@@ -63,11 +63,11 @@ class MangaFragment : Fragment(R.layout.fragment_manga) {
                             binding.contShimMangaListTrend.root.setVisibilityVisible()
                             binding.contMangaListTrend.root.setVisibilityGone()
                         }
-                        uiState.data.isNotEmpty() -> {
+                        uiState.mangaTrendingData.isNotEmpty() -> {
                             binding.contShimMangaListTrend.root.stopShimmer()
                             binding.contShimMangaListTrend.root.setVisibilityGone()
                             binding.contMangaListTrend.root.setVisibilityVisible()
-                            mangaTrendingAdapter.submitData(uiState.data)
+                            mangaTrendingAdapter.submitData(uiState.mangaTrendingData)
                         }
                         uiState.error.isNotEmpty() -> {
                             binding.contShimMangaListTrend.root.stopShimmer()
@@ -89,11 +89,11 @@ class MangaFragment : Fragment(R.layout.fragment_manga) {
                             binding.contShimMangaList.root.setVisibilityVisible()
                             binding.contMangaList.root.setVisibilityGone()
                         }
-                        uiState.data.isNotEmpty() -> {
+                        uiState.mangaData.isNotEmpty() -> {
                             binding.contShimMangaList.root.stopShimmer()
                             binding.contShimMangaList.root.setVisibilityGone()
                             binding.contMangaList.root.setVisibilityVisible()
-                            mangaAdapter.submitData(uiState.data)
+                            mangaAdapter.submitData(uiState.mangaData)
                         }
                         uiState.error.isNotEmpty() -> {
                             binding.contShimMangaList.root.stopShimmer()
