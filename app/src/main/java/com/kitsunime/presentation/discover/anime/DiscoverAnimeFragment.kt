@@ -10,9 +10,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.paging.LoadState
 import com.kitsunime.R
 import com.kitsunime.databinding.FragmentDiscoverAnimeBinding
-import com.kitsunime.presentation.discover.DiscoverLoadStateAdapter
 import com.kitsunime.presentation.discover.DiscoverViewModel
 import com.kitsunime.presentation.discover.adapter.DiscoverAnimeAdapter
+import com.kitsunime.presentation.discover.adapter.DiscoverLoadStateAdapter
 import com.kitsunime.presentation.util.setVisibilityGone
 import com.kitsunime.presentation.util.setVisibilityVisible
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,6 +43,7 @@ class DiscoverAnimeFragment : Fragment(R.layout.fragment_discover_anime) {
             )
             pagingAdapter.addLoadStateListener { loadState ->
                 if (loadState.source.refresh is LoadState.Loading) {
+                    shimDiscoverAnime.startShimmer()
                     shimDiscoverAnime.setVisibilityVisible()
                 } else {
                     shimDiscoverAnime.stopShimmer()

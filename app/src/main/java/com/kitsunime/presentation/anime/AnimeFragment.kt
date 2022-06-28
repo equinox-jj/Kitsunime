@@ -60,6 +60,7 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
                 animeVm.animeTrendingUiState.collect { uiState ->
                     when {
                         uiState.isLoading -> {
+                            binding.contShimAnimeListTrend.root.startShimmer()
                             binding.contShimAnimeListTrend.root.setVisibilityVisible()
                             binding.contAnimeListTrend.root.setVisibilityGone()
                         }
@@ -86,6 +87,7 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
                 animeVm.animeUiState.collect { uiState ->
                     when {
                         uiState.isLoading -> {
+                            binding.contShimAnimeList.root.startShimmer()
                             binding.contShimAnimeList.root.setVisibilityVisible()
                             binding.contAnimeList.root.setVisibilityGone()
                         }

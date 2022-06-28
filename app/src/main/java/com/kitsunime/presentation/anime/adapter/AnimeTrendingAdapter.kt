@@ -19,7 +19,7 @@ class AnimeTrendingAdapter : RecyclerView.Adapter<AnimeTrendingAdapter.AnimeTren
         fun bind(animeResult: KitsuResult) {
             binding.apply {
                 val posterImage = animeResult.attributes?.posterImage
-                val totalEp = animeResult.attributes?.episodeCount
+                val totalEp = animeResult.attributes?.episodeCount ?: "Unknown"
 
                 imageAnimePoster.load(posterImage?.small) {
                     crossfade(1000)
@@ -27,7 +27,7 @@ class AnimeTrendingAdapter : RecyclerView.Adapter<AnimeTrendingAdapter.AnimeTren
                 }
                 textAnimeTitle.isSelected = true
                 textAnimeTitle.text = animeResult.attributes?.canonicalTitle
-                textAnimeTotalEp.text = if (totalEp != null) "$totalEp Episodes" else "Unknown"
+                textAnimeTotalEp.text = "$totalEp Episodes"
                 textAnimeType.text = animeResult.attributes?.subtype?.replaceFirstChar { it.uppercase() }
             }
         }

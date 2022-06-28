@@ -19,7 +19,7 @@ class MangaTrendingAdapter : RecyclerView.Adapter<MangaTrendingAdapter.MangaTren
         fun bind(mangaResult: KitsuResult) {
             binding.apply {
                 val posterImage = mangaResult.attributes?.posterImage
-                val chapter = mangaResult.attributes?.chapterCount
+                val chapter = mangaResult.attributes?.chapterCount ?: "Unknown"
 
                 imageAnimePoster.load(posterImage?.small) {
                     crossfade(1000)
@@ -27,7 +27,7 @@ class MangaTrendingAdapter : RecyclerView.Adapter<MangaTrendingAdapter.MangaTren
                 }
                 textAnimeTitle.isSelected = true
                 textAnimeTitle.text = mangaResult.attributes?.canonicalTitle
-                textAnimeTotalEp.text = if (chapter != null) "$chapter Chapters" else "Unknown"
+                textAnimeTotalEp.text = "$chapter Chapters"
                 textAnimeType.text = mangaResult.attributes?.subtype?.replaceFirstChar { it.uppercase() }
             }
         }

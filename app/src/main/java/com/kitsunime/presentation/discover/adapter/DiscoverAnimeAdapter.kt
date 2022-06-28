@@ -19,9 +19,9 @@ class DiscoverAnimeAdapter :
             binding.apply {
                 val coverImage = kitsuResult.attributes?.coverImage
                 val posterImage = kitsuResult.attributes?.posterImage
-                val releaseDate = kitsuResult.attributes?.startDate
-                val duration = kitsuResult.attributes?.episodeLength
-                val totalEp = kitsuResult.attributes?.episodeCount
+                val releaseDate = kitsuResult.attributes?.startDate ?: "Unknown"
+                val duration = kitsuResult.attributes?.episodeLength ?: "Unknown"
+                val totalEp = kitsuResult.attributes?.episodeCount ?: "Unknown"
                 val categoryMap = kitsuResult.relationships?.categories?.data?.size
 
                 imageAnimeCover.load(coverImage?.small) {
@@ -35,9 +35,9 @@ class DiscoverAnimeAdapter :
                 textAnimeTitle.isSelected = true
                 textAnimeTitle.text = kitsuResult.attributes?.canonicalTitle
                 textAnimeCategory.text = "Category : $categoryMap"
-                textAnimeReleaseDate.text = if (releaseDate != null) "Release Date : $releaseDate" else "Release : Unknown"
-                textAnimeDuration.text = if (duration != null) "Duration : $duration Minutes" else "Duration : Unknown"
-                textAnimeTotalEp.text = if (totalEp != null) "Episode : $totalEp Episodes" else "Episodes : Unknown"
+                textAnimeReleaseDate.text = "Release Date : $releaseDate"
+                textAnimeDuration.text = "Duration : $duration Minutes"
+                textAnimeTotalEp.text = "Episode : $totalEp Episodes"
                 textAnimeType.text = kitsuResult.attributes?.subtype?.replaceFirstChar { it.uppercase() }
                 textAnimeStatus.text = kitsuResult.attributes?.status?.replaceFirstChar { it.uppercase() }
             }

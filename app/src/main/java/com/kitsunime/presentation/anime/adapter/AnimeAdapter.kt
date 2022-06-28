@@ -22,9 +22,9 @@ class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeListVH>() {
             binding.apply {
                 val coverImage = animeResult.attributes?.coverImage
                 val posterImage = animeResult.attributes?.posterImage
-                val releaseDate = animeResult.attributes?.startDate
-                val duration = animeResult.attributes?.episodeLength
-                val totalEp = animeResult.attributes?.episodeCount
+                val releaseDate = animeResult.attributes?.startDate ?: "Unknown"
+                val duration = animeResult.attributes?.episodeLength ?: "Unknown"
+                val totalEp = animeResult.attributes?.episodeCount ?: "Unknown"
                 val categoryMap = animeResult.relationships?.categories?.data?.size
 
                 imageAnimeCover.load(coverImage?.small) {
@@ -38,9 +38,9 @@ class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeListVH>() {
                 textAnimeTitle.isSelected = true
                 textAnimeTitle.text = animeResult.attributes?.canonicalTitle
                 textAnimeCategory.text = "Category : $categoryMap"
-                textAnimeReleaseDate.text = if (releaseDate != null) "Release Date : $releaseDate" else "Release : Unknown"
-                textAnimeDuration.text = if (duration != null) "Duration : $duration Minutes" else "Duration : Unknown"
-                textAnimeTotalEp.text = if (totalEp != null) "Episode : $totalEp Episodes" else "Episodes : Unknown"
+                textAnimeReleaseDate.text = "Release Date : $releaseDate"
+                textAnimeDuration.text = "Duration : $duration Minutes"
+                textAnimeTotalEp.text = "Episode : $totalEp Episodes"
                 textAnimeType.text = animeResult.attributes?.subtype?.replaceFirstChar { it.uppercase() }
                 textAnimeStatus.text = animeResult.attributes?.status?.replaceFirstChar { it.uppercase() }
 

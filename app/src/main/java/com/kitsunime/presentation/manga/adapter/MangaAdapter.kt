@@ -20,9 +20,9 @@ class MangaAdapter : RecyclerView.Adapter<MangaAdapter.MangaViewHolder>() {
                 binding.apply {
                     val coverImage = mangaResult.attributes?.coverImage
                     val posterImage = mangaResult.attributes?.posterImage
-                    val releaseDate = mangaResult.attributes?.startDate
-                    val chapter = mangaResult.attributes?.chapterCount
-                    val volume = mangaResult.attributes?.volumeCount
+                    val releaseDate = mangaResult.attributes?.startDate ?: "Unknown"
+                    val chapter = mangaResult.attributes?.chapterCount ?: "Unknown"
+                    val volume = mangaResult.attributes?.volumeCount ?: "Unknown"
                     val categoryMap = mangaResult.relationships?.categories?.data?.size
 
                     imageAnimeCover.load(coverImage?.small) {
@@ -36,9 +36,9 @@ class MangaAdapter : RecyclerView.Adapter<MangaAdapter.MangaViewHolder>() {
                     textAnimeTitle.isSelected = true
                     textAnimeTitle.text = mangaResult.attributes?.canonicalTitle
                     textAnimeCategory.text = "Category : $categoryMap"
-                    textAnimeReleaseDate.text = if (releaseDate != null) "Release Date : $releaseDate" else "Release Date : Unknown"
-                    textAnimeDuration.text = if (chapter != null) "Chapters : $chapter Chapters" else "Chapter : Unknown"
-                    textAnimeTotalEp.text = if (volume != null) "Volume : $volume" else "Volume : Unknown"
+                    textAnimeReleaseDate.text = "Release Date : $releaseDate"
+                    textAnimeDuration.text = "Chapters : $chapter Chapters"
+                    textAnimeTotalEp.text = "Volume : $volume"
                     textAnimeType.text = mangaResult.attributes?.subtype?.replaceFirstChar { it.uppercase() }
                     textAnimeStatus.text = mangaResult.attributes?.status?.replaceFirstChar { it.uppercase() }
                 }

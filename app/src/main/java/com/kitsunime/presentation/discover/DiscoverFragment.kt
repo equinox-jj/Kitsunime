@@ -7,6 +7,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.kitsunime.R
 import com.kitsunime.databinding.FragmentDiscoverBinding
+import com.kitsunime.presentation.discover.adapter.DiscoverPagerAdapter
 import com.kitsunime.presentation.discover.anime.DiscoverAnimeFragment
 import com.kitsunime.presentation.discover.manga.DiscoverMangaFragment
 import dagger.hilt.android.AndroidEntryPoint
