@@ -9,6 +9,7 @@ import coil.load
 import com.kitsunime.R
 import com.kitsunime.databinding.ItemVerticalBinding
 import com.kitsunime.domain.model.KitsuResult
+import com.kitsunime.presentation.util.setVisibilityGone
 
 class DiscoverAnimeAdapter :
     PagingDataAdapter<KitsuResult, DiscoverAnimeAdapter.DiscoverAnimeViewHolder>(ANIME_COMPARATOR) {
@@ -19,9 +20,9 @@ class DiscoverAnimeAdapter :
             binding.apply {
                 val coverImage = kitsuResult.attributes?.coverImage
                 val posterImage = kitsuResult.attributes?.posterImage
-                val releaseDate = kitsuResult.attributes?.startDate ?: "Unknown"
-                val duration = kitsuResult.attributes?.episodeLength ?: "Unknown"
-                val totalEp = kitsuResult.attributes?.episodeCount ?: "Unknown"
+                val releaseDate = kitsuResult.attributes?.startDate ?: textAnimeReleaseDate.setVisibilityGone()
+                val duration = kitsuResult.attributes?.episodeLength ?: textAnimeDuration.setVisibilityGone()
+                val totalEp = kitsuResult.attributes?.episodeCount ?: textAnimeTotalEp.setVisibilityGone()
                 val categoryMap = kitsuResult.relationships?.categories?.data?.size
 
                 imageAnimeCover.load(coverImage?.small) {

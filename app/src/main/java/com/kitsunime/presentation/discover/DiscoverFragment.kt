@@ -22,7 +22,6 @@ class DiscoverFragment : Fragment(R.layout.fragment_discover) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentDiscoverBinding.bind(view)
         setupViewPager()
-
     }
 
     private fun setupViewPager() {

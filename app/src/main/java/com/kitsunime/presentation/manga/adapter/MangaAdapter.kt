@@ -9,6 +9,7 @@ import com.kitsunime.R
 import com.kitsunime.databinding.ItemVerticalBinding
 import com.kitsunime.domain.model.KitsuResult
 import com.kitsunime.presentation.util.DiffUtils
+import com.kitsunime.presentation.util.setVisibilityGone
 
 class MangaAdapter : RecyclerView.Adapter<MangaAdapter.MangaViewHolder>() {
 
@@ -20,9 +21,9 @@ class MangaAdapter : RecyclerView.Adapter<MangaAdapter.MangaViewHolder>() {
                 binding.apply {
                     val coverImage = mangaResult.attributes?.coverImage
                     val posterImage = mangaResult.attributes?.posterImage
-                    val releaseDate = mangaResult.attributes?.startDate ?: "Unknown"
-                    val chapter = mangaResult.attributes?.chapterCount ?: "Unknown"
-                    val volume = mangaResult.attributes?.volumeCount ?: "Unknown"
+                    val releaseDate = mangaResult.attributes?.startDate ?: textAnimeReleaseDate.setVisibilityGone()
+                    val chapter = mangaResult.attributes?.chapterCount ?: textAnimeDuration.setVisibilityGone()
+                    val volume = mangaResult.attributes?.volumeCount ?: textAnimeTotalEp.setVisibilityGone()
                     val categoryMap = mangaResult.relationships?.categories?.data?.size
 
                     imageAnimeCover.load(coverImage?.small) {

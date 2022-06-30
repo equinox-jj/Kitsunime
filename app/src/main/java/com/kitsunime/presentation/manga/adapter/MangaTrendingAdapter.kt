@@ -9,6 +9,7 @@ import com.kitsunime.R
 import com.kitsunime.databinding.ItemHorizontalBinding
 import com.kitsunime.domain.model.KitsuResult
 import com.kitsunime.presentation.util.DiffUtils
+import com.kitsunime.presentation.util.setVisibilityGone
 
 class MangaTrendingAdapter : RecyclerView.Adapter<MangaTrendingAdapter.MangaTrendingVH>() {
 
@@ -19,7 +20,7 @@ class MangaTrendingAdapter : RecyclerView.Adapter<MangaTrendingAdapter.MangaTren
         fun bind(mangaResult: KitsuResult) {
             binding.apply {
                 val posterImage = mangaResult.attributes?.posterImage
-                val chapter = mangaResult.attributes?.chapterCount ?: "Unknown"
+                val chapter = mangaResult.attributes?.chapterCount ?: textAnimeTotalEp.setVisibilityGone()
 
                 imageAnimePoster.load(posterImage?.small) {
                     crossfade(1000)

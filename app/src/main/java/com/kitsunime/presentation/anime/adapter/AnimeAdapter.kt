@@ -11,6 +11,7 @@ import com.kitsunime.databinding.ItemVerticalBinding
 import com.kitsunime.domain.model.KitsuResult
 import com.kitsunime.presentation.anime.AnimeFragmentDirections
 import com.kitsunime.presentation.util.DiffUtils
+import com.kitsunime.presentation.util.setVisibilityGone
 
 class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeListVH>() {
 
@@ -22,9 +23,9 @@ class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeListVH>() {
             binding.apply {
                 val coverImage = animeResult.attributes?.coverImage
                 val posterImage = animeResult.attributes?.posterImage
-                val releaseDate = animeResult.attributes?.startDate ?: "Unknown"
-                val duration = animeResult.attributes?.episodeLength ?: "Unknown"
-                val totalEp = animeResult.attributes?.episodeCount ?: "Unknown"
+                val releaseDate = animeResult.attributes?.startDate ?: textAnimeReleaseDate.setVisibilityGone()
+                val duration = animeResult.attributes?.episodeLength ?: textAnimeDuration.setVisibilityGone()
+                val totalEp = animeResult.attributes?.episodeCount ?: textAnimeTotalEp.setVisibilityGone()
                 val categoryMap = animeResult.relationships?.categories?.data?.size
 
                 imageAnimeCover.load(coverImage?.small) {

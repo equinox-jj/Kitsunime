@@ -60,7 +60,6 @@ class MangaFragment : Fragment(R.layout.fragment_manga) {
                 mangaVm.mangaTrendingUiState.collect { uiState ->
                     when {
                         uiState.isLoading -> {
-                            binding.contShimMangaListTrend.root.startShimmer()
                             binding.contShimMangaListTrend.root.setVisibilityVisible()
                             binding.contMangaListTrend.root.setVisibilityGone()
                         }
@@ -87,7 +86,6 @@ class MangaFragment : Fragment(R.layout.fragment_manga) {
                 mangaVm.mangaUiState.collect { uiState ->
                     when {
                         uiState.isLoading -> {
-                            binding.contShimMangaList.root.startShimmer()
                             binding.contShimMangaList.root.setVisibilityVisible()
                             binding.contMangaList.root.setVisibilityGone()
                         }

@@ -29,6 +29,8 @@ class AnimeViewModel @Inject constructor(
         getAnimeList()
     }
 
+    /**
+     * onEach will be called every time the flow emits a value */
     private fun getAnimeTrendingList() {
         useCases.getAnimeTrendingListUseCase().onEach { result ->
             when (result) {

@@ -43,7 +43,6 @@ class DiscoverAnimeFragment : Fragment(R.layout.fragment_discover_anime) {
             )
             pagingAdapter.addLoadStateListener { loadState ->
                 if (loadState.source.refresh is LoadState.Loading) {
-                    shimDiscoverAnime.startShimmer()
                     shimDiscoverAnime.setVisibilityVisible()
                 } else {
                     shimDiscoverAnime.stopShimmer()
