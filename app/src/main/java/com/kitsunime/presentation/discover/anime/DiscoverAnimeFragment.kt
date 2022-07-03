@@ -2,6 +2,7 @@ package com.kitsunime.presentation.discover.anime
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -13,8 +14,6 @@ import com.kitsunime.databinding.FragmentDiscoverAnimeBinding
 import com.kitsunime.presentation.discover.DiscoverViewModel
 import com.kitsunime.presentation.discover.adapter.DiscoverAnimeAdapter
 import com.kitsunime.presentation.discover.adapter.DiscoverLoadStateAdapter
-import com.kitsunime.presentation.util.setVisibilityGone
-import com.kitsunime.presentation.util.setVisibilityVisible
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -41,12 +40,14 @@ class DiscoverAnimeFragment : Fragment(R.layout.fragment_discover_anime) {
                 header = DiscoverLoadStateAdapter { pagingAdapter.retry() },
                 footer = DiscoverLoadStateAdapter { pagingAdapter.retry() }
             )
+            discAnimeRefresh.setOnRefreshListener {
+                pagingAdapter.retry()
+                discAnimeRefresh.isRefreshing = false
+            }
             pagingAdapter.addLoadStateListener { loadState ->
-                if (loadState.source.refresh is LoadState.Loading) {
-                    shimDiscoverAnime.setVisibilityVisible()
-                } else {
-                    shimDiscoverAnime.stopShimmer()
-                    shimDiscoverAnime.setVisibilityGone()
+                shimDiscoverAnime.isVisible = loadState.source.refresh is LoadState.Loading
+                if (loadState.source.refresh is LoadState.NotLoading && loadState.append.endOfPaginationReached) {
+                    rvDiscoverAnime.isVisible = false
                 }
             }
         }

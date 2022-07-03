@@ -2,12 +2,11 @@ package com.kitsunime.presentation.discover.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.kitsunime.databinding.ItemLoadStateDiscoverBinding
-import com.kitsunime.presentation.util.setVisibilityGone
-import com.kitsunime.presentation.util.setVisibilityVisible
 
 class DiscoverLoadStateAdapter(private val retry: () -> Unit) :
     LoadStateAdapter<DiscoverLoadStateAdapter.LoadStateViewHolder>() {
@@ -23,20 +22,9 @@ class DiscoverLoadStateAdapter(private val retry: () -> Unit) :
 
         fun bind(loadState: LoadState) {
             binding.apply {
-                if (loadState is LoadState.Loading) {
-                    shimmerLoadStateDiscover.setVisibilityVisible()
-                } else {
-                    shimmerLoadStateDiscover.stopShimmer()
-                    shimmerLoadStateDiscover.setVisibilityGone()
-                }
-
-                if (loadState is LoadState.Error) {
-                    btnErrorLoadState.setVisibilityVisible()
-                    tvErrorLoadState.setVisibilityVisible()
-                } else {
-                    btnErrorLoadState.setVisibilityGone()
-                    tvErrorLoadState.setVisibilityGone()
-                }
+                shimmerLoadStateDiscover.isVisible = loadState is LoadState.Loading
+                btnErrorLoadState.isVisible = loadState is LoadState.Error
+                tvErrorLoadState.isVisible = loadState is LoadState.Error
             }
         }
     }

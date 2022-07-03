@@ -36,7 +36,7 @@ class DiscoverFragment : Fragment(R.layout.fragment_discover) {
         titles.add("Anime")
         titles.add("Manga")
 
-        viewPager.adapter = DiscoverPagerAdapter(fragmentTabs, this)
+        viewPager.adapter = DiscoverPagerAdapter(fragmentTabs, fragment = this)
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = titles[position]
