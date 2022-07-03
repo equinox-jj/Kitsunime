@@ -35,9 +35,15 @@ class Repository @Inject constructor(
             dao.deleteAnimeTrendingIdsDao(remoteResponse.map { it.id })
             dao.insertAnimeTrendingDao(remoteResponse.map { it.toAnimeTrendingEntity() })
         } catch (e: HttpException) {
-            emit(Resource.Error(message = e.localizedMessage ?: "An unexpected error occurred.", data = kitsuDao))
+            emit(Resource.Error(
+                message = e.localizedMessage ?: "An unexpected error occurred.",
+                data = kitsuDao
+            ))
         } catch (e: IOException) {
-            emit(Resource.Error(message = e.localizedMessage ?: "No Internet Connection.", data = kitsuDao))
+            emit(Resource.Error(
+                message = e.localizedMessage ?: "No Internet Connection.",
+                data = kitsuDao
+            ))
         }
 
         val newKitsuDao = dao.getAnimeTrendingDao().map { it.toKitsuResult() }
@@ -55,9 +61,15 @@ class Repository @Inject constructor(
             dao.deleteAnimeIdsDao(remoteResponse.map { it.id })
             dao.insertAnimeDao(remoteResponse.map { it.toAnimeEntity() })
         } catch (e: HttpException) {
-            emit(Resource.Error(message = e.localizedMessage ?: "An unexpected error occurred.", data = kitsuDao))
+            emit(Resource.Error(
+                message = e.localizedMessage ?: "An unexpected error occurred.",
+                data = kitsuDao
+            ))
         } catch (e: IOException) {
-            emit(Resource.Error(message = e.localizedMessage ?: "No Internet Connection", data = kitsuDao))
+            emit(Resource.Error(
+                message = e.localizedMessage ?: "No Internet Connection",
+                data = kitsuDao
+            ))
         }
 
         val newKitsuDao = dao.getAnimeDao().map { it.toKitsuResult() }
@@ -75,9 +87,15 @@ class Repository @Inject constructor(
             dao.deleteMangaTrendingIdsDao(remoteResponse.map { it.id })
             dao.insertMangaTrendingDao(remoteResponse.map { it.toMangaTrendingEntity() })
         } catch (e: HttpException) {
-            emit(Resource.Error(message = e.localizedMessage ?: "An unexpected error occurred.", data = kitsuDao))
+            emit(Resource.Error(
+                message = e.localizedMessage ?: "An unexpected error occurred.",
+                data = kitsuDao
+            ))
         } catch (e: IOException) {
-            emit(Resource.Error(message = e.localizedMessage ?: "No Internet Connection", data = kitsuDao))
+            emit(Resource.Error(
+                message = e.localizedMessage ?: "No Internet Connection",
+                data = kitsuDao
+            ))
         }
 
         val newKitsuDao = dao.getMangaTrendingDao().map { it.toKitsuResult() }
@@ -95,9 +113,15 @@ class Repository @Inject constructor(
             dao.deleteMangaIdsDao(remoteResponse.map { it.id })
             dao.insertMangaDao(remoteResponse.map { it.toMangaEntity() })
         } catch (e: HttpException) {
-            emit(Resource.Error(message = e.localizedMessage ?: "An unexpected error occurred.", data = kitsuDao))
+            emit(Resource.Error(
+                message = e.localizedMessage ?: "An unexpected error occurred.",
+                data = kitsuDao
+            ))
         } catch (e: IOException) {
-            emit(Resource.Error(message = e.localizedMessage ?: "No Internet Connection", data = kitsuDao))
+            emit(Resource.Error(
+                message = e.localizedMessage ?: "No Internet Connection",
+                data = kitsuDao
+            ))
         }
 
         val newKitsuDao = dao.getMangaDao().map { it.toKitsuResult() }
@@ -110,7 +134,7 @@ class Repository @Inject constructor(
     ).flow
 
     override fun getMangaPagingSource(): Flow<PagingData<KitsuResult>> {
-        return flow {  }
+        return flow { }
     }
 
 }

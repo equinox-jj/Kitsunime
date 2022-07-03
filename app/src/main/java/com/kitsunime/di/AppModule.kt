@@ -79,16 +79,16 @@ object AppModule {
 
     @Singleton
     @Provides
+    fun kitsuDao(database: KitsuDatabase) = database.kitsuDao()
+
+    @Singleton
+    @Provides
     fun provideRepository(
         kitsuService: KitsuService,
         kitsuDao: KitsuDao,
     ): IRepository {
         return Repository(kitsuService, kitsuDao)
     }
-
-    @Singleton
-    @Provides
-    fun kitsuDao(database: KitsuDatabase) = database.kitsuDao()
 
     @Singleton
     @Provides

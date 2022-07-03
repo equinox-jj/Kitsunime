@@ -12,10 +12,11 @@ import com.kitsunime.domain.model.KitsuResult
 import com.kitsunime.presentation.anime.AnimeFragmentDirections
 import com.kitsunime.presentation.util.DiffUtils
 import com.kitsunime.presentation.util.setVisibilityGone
+import okhttp3.internal.immutableListOf
 
 class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeListVH>() {
 
-    private var animeResult = listOf<KitsuResult>()
+    private var animeResult = immutableListOf<KitsuResult>()
 
     class AnimeListVH(private val binding: ItemVerticalBinding) :
         RecyclerView.ViewHolder(binding.root) {

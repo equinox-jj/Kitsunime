@@ -10,10 +10,11 @@ import com.kitsunime.databinding.ItemHorizontalBinding
 import com.kitsunime.domain.model.KitsuResult
 import com.kitsunime.presentation.util.DiffUtils
 import com.kitsunime.presentation.util.setVisibilityGone
+import okhttp3.internal.immutableListOf
 
 class AnimeTrendingAdapter : RecyclerView.Adapter<AnimeTrendingAdapter.AnimeTrendingVH>() {
 
-    private var animeResult = listOf<KitsuResult>()
+    private var animeResult = immutableListOf<KitsuResult>()
 
     class AnimeTrendingVH(private val binding: ItemHorizontalBinding) :
         RecyclerView.ViewHolder(binding.root) {
