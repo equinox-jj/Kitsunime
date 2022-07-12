@@ -5,8 +5,10 @@ import androidx.room.Room
 import com.kitsunime.data.local.KitsuDatabase
 import com.kitsunime.data.local.dao.KitsuDao
 import com.kitsunime.data.remote.KitsuService
-import com.kitsunime.data.repository.Repository
-import com.kitsunime.domain.repository.IRepository
+import com.kitsunime.data.repository.AnimeRepository
+import com.kitsunime.data.repository.MangaRepository
+import com.kitsunime.domain.repository.IAnimeRepository
+import com.kitsunime.domain.repository.IMangaRepository
 import com.kitsunime.domain.use_case.UseCases
 import com.kitsunime.domain.use_case.anime_use_cases.GetAnimeListUseCase
 import com.kitsunime.domain.use_case.anime_use_cases.GetAnimePagingUseCase
@@ -83,23 +85,34 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideRepository(
+    fun provideAnimeRepository(
         kitsuService: KitsuService,
         kitsuDao: KitsuDao,
-    ): IRepository {
-        return Repository(kitsuService, kitsuDao)
+    ): IAnimeRepository {
+        return AnimeRepository(kitsuService, kitsuDao)
     }
 
+    /** REPOSITORY */
     @Singleton
     @Provides
-    fun provideUseCases(repository: Repository): UseCases {
+    fun provideMangaRepository(
+        kitsuService: KitsuService,
+        kitsuDao: KitsuDao,
+    ): IMangaRepository {
+        return MangaRepository(kitsuService, kitsuDao)
+    }
+
+    /** USE_CASES */
+    @Singleton
+    @Provides
+    fun provideUseCases(animeRepository: AnimeRepository, mangaRepository: MangaRepository): UseCases {
         return UseCases(
-            getAnimeListUseCase = GetAnimeListUseCase(repository),
-            getAnimeTrendingListUseCase = GetAnimeTrendingListUseCase(repository),
-            getAnimePagingUseCase = GetAnimePagingUseCase(repository),
-            getMangaListUseCase = GetMangaListUseCase(repository),
-            getMangaTrendingListUseCase = GetMangaTrendingListUseCase(repository),
-            getMangaPagingUseCase = GetMangaPagingUseCase(repository)
+            getAnimeListUseCase = GetAnimeListUseCase(animeRepository),
+            getAnimeTrendingListUseCase = GetAnimeTrendingListUseCase(animeRepository),
+            getAnimePagingUseCase = GetAnimePagingUseCase(animeRepository),
+            getMangaListUseCase = GetMangaListUseCase(mangaRepository),
+            getMangaTrendingListUseCase = GetMangaTrendingListUseCase(mangaRepository),
+            getMangaPagingUseCase = GetMangaPagingUseCase(mangaRepository)
         )
     }
 
